@@ -1,0 +1,1 @@
+All class lecture notes will be stored here. 
