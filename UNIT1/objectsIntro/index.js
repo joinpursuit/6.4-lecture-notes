@@ -1,3 +1,5 @@
+import { object } from "prop-types";
+
 let arr = [1, 2, 3, 4];
 // arr[7] = 6;
 // console.log(arr)
@@ -69,6 +71,9 @@ closet.spring.head = "yankee hat"
 // let obj2 = {name: "sammy", animal: "cat"};
 // // let obj2 = obj 
 // console.log(obj === obj2)
+
+// object.key // retrieves value 
+// object.key = value // sets key to point to value in object
 
 let films = [
   {
