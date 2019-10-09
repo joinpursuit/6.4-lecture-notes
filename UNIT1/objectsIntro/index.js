@@ -87,5 +87,10 @@ let films = [
     released: 1995,
   },
 ];
+let sum = 0;
+for(let i = 0; i < films.length; i += 1) {
+    sum += films[i]["released"]
+}
+console.log(Math.floor(sum / films.length))
 
-console.log(films)
+// console.log(films)
