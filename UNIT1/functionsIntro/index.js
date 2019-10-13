@@ -68,18 +68,79 @@ function incrementCount() { // a function for it's side effect
 //     let doubled = num * 2; 
 //     return doubled * doubled ; // Math.pow(doubled, 2) // doubled**2; 
 // }
-function double(num) {
-    return num * 2; 
-}
-function square(num) {
-    return num * num; 
-}
+// function double(num) {
+//     return num * 2; 
+// }
+// function square(num) {
+//     return num * num; 
+// }
 
-function doubleSquare(num) {
-    return square(double(num));
-}
- console.log(doubleSquare(4))
+// function doubleSquare(num) {
+//     return square(double(num));
+// }
+//  console.log(doubleSquare(4))
 
 // console.log(doubleSquare(4))
 // write a function that takes in two arguments and returns the sum of them. 
 
+// ONce a function returns that function is over. 
+
+// function evenOrOdd(num) {
+//     if(num % 2 === 1) {
+//         return "NUMBER IS ODD"
+//     } else {
+//         return "NUMBER IS EVEN"
+//     }
+//     return "NEITHER EVER NOR ODD"; // UNREACHABLE
+// }
+// console.log(evenOrOdd("cat"))
+
+function sum(arr) {
+    let sum = 0; 
+    for(let i = 0;  i < arr.length; i ++) {
+        sum += arr[i]
+        return sum // Ends loop
+    }
+    return sum; 
+}
+
+// console.log(sum([1, 2, 3]))
+
+// function sayHello() {  // ES5
+//     return "Hello"
+// }
+
+// var sayHello = function(name) {
+//     return "Hello " + name
+// }
+
+// const sayHello = (name) => {
+//     return "Hello " + name; // Explicit return 
+// }
+
+// const sayHello = (name) => "Hello " + name;  // Implicit return 
+
+// console.log(sayHello("corey"))
+
+// Function that takes two numbers and returns the sum of the two 
+const addTWoNums = (num1, num2) => num1 + num2;
+
+// const addTWoNums = (num1, num2) => {
+//     return num1 + num2;
+// }
+// console.log(addTWoNums(7, 6))
+
+// Rewrite doubleSquare
+// const doubleSquare = (num) => {
+//     num = num + num; 
+//     num = Math.pow(num, 2)
+//     return num ; 
+// }
+// const doubleSquare = (num) => {
+//    return (num * 2)** 2
+// }
+
+const doubleNum = num => num * 2
+const squareNum = num => Math.pow(num, 2)
+const doubleSquare = num => squareNum(doubleNum(num))
+// console.log(doubleSquare(4))
