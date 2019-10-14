@@ -95,14 +95,14 @@ function incrementCount() { // a function for it's side effect
 // }
 // console.log(evenOrOdd("cat"))
 
-function sum(arr) {
-    let sum = 0; 
-    for(let i = 0;  i < arr.length; i ++) {
-        sum += arr[i]
-        return sum // Ends loop
-    }
-    return sum; 
-}
+// function sum(arr) {
+//     let sum = 0; 
+//     for(let i = 0;  i < arr.length; i ++) {
+//         sum += arr[i]
+//         return sum // Ends loop
+//     }
+//     return sum; 
+// }
 
 // console.log(sum([1, 2, 3]))
 
@@ -140,7 +140,59 @@ const addTWoNums = (num1, num2) => num1 + num2;
 //    return (num * 2)** 2
 // }
 
-const doubleNum = num => num * 2
-const squareNum = num => Math.pow(num, 2)
-const doubleSquare = num => squareNum(doubleNum(num))
+// const doubleNum = num => num * 2
+// const squareNum = num => Math.pow(num, 2)
+// const doubleSquare = num => squareNum(doubleNum(num))
 // console.log(doubleSquare(4))
+
+// Write a function that takes in an array and returns the product of the array. [1, 2,3, 4 ] // => 24 
+
+// const arrayProduct = (arr) => {
+//     let product = 1; 
+//     for(let i = 0; i < arr.length; i += 1) {
+//         product *= arr[i]; // product = product * arr[i]
+//     }
+//     return product; 
+// }
+// console.log(arrayProduct([1, 2, 3, 4]))
+
+function arrayProduct(arr) {
+    let product = 1; 
+    for(let i = 0; i < arr.length; i += 1) {
+        product *= arr[i]; // product = product * arr[i]
+    }
+    return product; 
+}
+
+//  side effect!
+// let health = 100; 
+
+// const takeDamage = (num) => {
+//     health -= num; 
+// }
+
+// console.log(health)
+// takeDamage(20);
+// console.log(health)
+
+const addNums = (num1, num2) => {
+    return num1 + num2
+}
+
+const sayHello = () => {
+    return "hello"
+}
+
+const caller = (fn) => {
+    return fn();
+}
+
+// console.log(caller(sayHello))
+
+const doMath = (num1, num2, mathFn) => {
+    return mathFn(num1, num2)
+}
+console.log(doMath(13, 49, addNums))
+let favOriteNum = 13;
+let leastFav = 49; 
+// addNums(favOriteNum, leastFav)
