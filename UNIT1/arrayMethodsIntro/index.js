@@ -147,11 +147,40 @@ const allEvens = (arr) => {
 // Write a function that takes in an array and a target, return whether all elements in the array 
 // are greater than the target. 
 
-const greaterThan = (arr, target) => {
-    return arr.every((el) => {
-        return el > target
-    })
+// const greaterThan = (arr, target) => {
+//     return arr.every((el) => {
+//         return el > target
+//     })
+// }
+
+// console.log(greaterThan([4, 5, 6], 2)) // true 
+// console.log(greaterThan([4, 5, 6], 4)) // false  
+
+
+Array.prototype.showMeTheMoney = function(fn) {
+    // console.log(this)
+    return "the moeny"
 }
 
-console.log(greaterThan([4, 5, 6], 2)) // true 
-console.log(greaterThan([4, 5, 6], 4)) // false  
+Array.prototype.forEachReverse = function(cb) {
+    for(let i = this.length - 1; i >= 0; i--) {
+        cb(this[i])
+    }
+}
+let arr = [1, 2, 3, 4];
+arr.forEachReverse(el => {
+  console.log(el);
+});
+
+String.prototype.yell = function() {
+    return this.toUpperCase();
+}
+
+let str = "hello my name is corey"
+console.log(str.yell())
+
+function fire() {
+    console.log(this)
+}
+
+fire()
