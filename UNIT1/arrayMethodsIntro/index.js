@@ -159,7 +159,7 @@ const allEvens = (arr) => {
 
 Array.prototype.showMeTheMoney = function(fn) {
     // console.log(this)
-    return "the moeny"
+    return "the money"
 }
 
 Array.prototype.forEachReverse = function(cb) {
@@ -167,20 +167,168 @@ Array.prototype.forEachReverse = function(cb) {
         cb(this[i])
     }
 }
-let arr = [1, 2, 3, 4];
-arr.forEachReverse(el => {
-  console.log(el);
-});
+// let arr = [1, 2, 3, 4];
+// arr.forEachReverse(el => {
+//   console.log(el);
+// });
 
 String.prototype.yell = function() {
     return this.toUpperCase();
 }
 
-let str = "hello my name is corey"
-console.log(str.yell())
+// let str = "hello my name is corey"
+// console.log(str.yell())
 
 function fire() {
     console.log(this)
 }
 
-fire()
+// fire()
+
+// 1. Write a function called myFilter that takes in an array and a callback. 
+// It should return a new array with only the elements that had a truthy return 
+// from the callback. 
+// Dont use the built in filter. Then try and use forEach to help write it. 
+
+
+const myfilter = (arr, callback) => {
+    let output = [];
+    // for(let i = 0; i < arr.length; i++) {
+    //     if(callback(arr[i])) {
+    //         output.push(arr[i])
+    //     }
+    // }
+    arr.forEach(el => {
+        if(callback(el)) {
+            output.push(el)
+        }
+     })
+    return output;
+}
+
+// console.log(
+//     myfilter([1, 2, 1, 0, 0, 1], (el) => el)
+// )
+
+// console.log(
+//    [1, 2, 1, 0, 0].filter(el => {
+//        return el;
+//    })
+// )
+
+
+
+// 2. Write a function that takes in an array of people objects and returns a 
+// new array with only the names listed. 
+let people = [{name: "corey", age: 100},
+             {name: "jon", age: 90}, 
+             {name: "Beavis", age: 16}, 
+             {name: "Butthead", age: 17}, 
+             {name: "Rick", age: 72}, 
+             {name: "Paul", age: 16}, 
+             {name: "Celine", age: 177},
+             {name: "Morty", age: 12},
+            {name: "Caroline", age: 21},
+            {name: "Beth", age: 18}
+            ]
+const peopleName = (arr) => {
+    return arr.map((person) => {
+        return person["name"]
+    })
+}
+const peopleAge = (arr) => {
+    return arr.map((person) => {
+        return person["age"]
+    })
+}
+const peopleAttribute = (arr, attr = "name") => {
+    return arr.map((person) => {
+        return person[attr];
+    })
+}
+// console.log(peopleAttribute(people, "age"));
+
+
+
+
+
+
+
+
+// 3. Write a function that takes in an array of people objects 
+// and returns a new array with only people that have ages of 18 and over.
+// Think of ways to make this more flexible. ageRestriction. Default argument?
+// [
+//   { name: "corey", age: 100 },
+//   { name: "jon", age: 90 },
+//   { name: "Rick", age: 72 },
+//   { name: "Celine", age: 177 },
+//   { name: "Caroline", age: 21 },
+//   { name: "Beth", age: 18 },
+// ];
+const ageRestriction = (arr, age = 18) => {
+    let filtered =  arr.filter((person) => {
+        return person["age"] >= age;
+    })
+
+    return filtered;
+}
+// console.log(ageRestriction(people))
+
+
+
+
+
+// 4. Write a function that takes in an array of people objects and returns whether 
+// or not every person is 18 or over. 
+// Also think about making it more flexible
+
+const overAge = (arr, target = 18) => {
+    return arr.every((el) => {
+        return el.age >= target
+    })
+}
+// console.log(overAge(ageRestriction(people)))
+
+
+
+
+
+// 5. Write a function that takes in an array of people objects and returns whether 
+// some people are over the age of 18. (hint: you'll need to look up a diff method)
+
+const somePeople = (arr, age = 18) => {
+    return arr.some((person) => {
+        return person.age >= age; 
+    })
+}
+
+// console.log(somePeople(ageRestriction(people, 200)))
+
+
+
+
+// 6. Write a function that takes in an array of words and returns an object with 
+// the count occurances of each word. 
+
+let wordArr = ["hello", "goodbye", "corey", "hello", "hello", "corey"]
+// {hello: 3, corey: 2, goodbye: 1} - I don't care about order 
+
+const wordCounter = (words) => {
+    let counts = {};
+    words.forEach((word) => {
+        if(counts[word]) {
+            counts[word] += 1
+        } else {
+            counts[word] = 1;
+        }
+    })
+    return counts
+}
+
+console.log(wordCounter(wordArr))
+
+
+// 7. Write a function called onlyOddStrings that takes in an array of strings and 
+// returns an array that includes only strings with an odd number of characters. 
+
