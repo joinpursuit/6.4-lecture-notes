@@ -16,7 +16,6 @@ class Board {
     };
   }
   isValidMove(move) {
-    // we'll get move from the user as a string number
     if (!this.MOVES[move]) return false;
     let [row, col] = this.MOVES[move];
     // let row = this.MOVES[move][0]
@@ -80,13 +79,33 @@ class Board {
     });
     return dup;
   }
+
+  displayBoard() {
+      this.board.forEach((row, i) => {
+          console.log(row.join(" | "))
+          if(i !== this.board.length - 1) {
+              console.log("---------")
+
+          }
+      })
+  }
+
+//   Warm up! In your board class create a
+//    displayBoard method that prints the boards state to the console.
+//     Then in the Game file create a class called Game.
+//      It should take two players as arguments. In the constructor is 
+//      should set a currentPlayer,
+//    and create a new instance of the board.
 }
 
-let board = new Board();
-console.log(board.board)
-board.placeMark("X", 3)
-board.placeMark("X", 5)
-board.placeMark("X", 7)
-// board.placeMark("X", 7)
+module.exports = Board; 
 
-console.log(board.isDiagnol())
+// let board = new Board();
+// board.displayBoard()
+// console.log(board.board)
+// board.placeMark("X", 3)
+// board.placeMark("X", 5)
+// board.placeMark("X", 7)
+// // board.placeMark("X", 7)
+
+// console.log(board.isDiagnol())
