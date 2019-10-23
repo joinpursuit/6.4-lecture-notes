@@ -31,9 +31,12 @@ class Board {
   }
 
   findWinner() {
-    // isHorizontal
-    // isVertical
-    // isDiagnol
+    this.isHorizontal()
+    this.isVertical()
+    this.isDiagnol()
+    if(this.movesRemaining === 0 && !this.winner) {
+        this.winner = "tie"
+    }
     // update winner to the sym that wins if there is a winner.
     //If there's no winner and moves are at 0, make winner = "tie"
   }
@@ -51,6 +54,22 @@ class Board {
       let transposed = this.transpose();
       return this.isHorizontal(transposed)
   }
+
+  isDiagnol() {
+    let leftDown = [];
+    let rightDown = [];
+    for(let i = 0; i <this.board.length; i++) {
+        leftDown.push(this.board[i][i])
+        rightDown.push(this.board[this.board.length - i - 1][i])
+    }
+    if(leftDown.every(el => el === leftDown[0])) {
+        this.winner = leftDown[0]
+    }
+    if(rightDown.every(el => el === rightDown[0])) {
+        this.winner = rightDown[0]
+    }
+    return this.winner
+}
   transpose() {
     let dup = [];
     this.board.forEach((row, i) => {
@@ -65,8 +84,9 @@ class Board {
 
 let board = new Board();
 console.log(board.board)
-board.placeMark("X", 1)
-board.placeMark("X", 4)
+board.placeMark("X", 3)
+board.placeMark("X", 5)
+board.placeMark("X", 7)
 // board.placeMark("X", 7)
 
-console.log(board.isVertical())
+console.log(board.isDiagnol())
