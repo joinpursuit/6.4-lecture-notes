@@ -36,6 +36,8 @@ class Board {
     if(this.movesRemaining === 0 && !this.winner) {
         this.winner = "tie"
     }
+
+    return this.winner;
     // update winner to the sym that wins if there is a winner.
     //If there's no winner and moves are at 0, make winner = "tie"
   }
