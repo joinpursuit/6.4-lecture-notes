@@ -41,12 +41,13 @@ const sumArray = (arr) => {
 }
 
 const sumArrayReduce = arr => {
-    return arr.reduce((sum, el) => {
+    return arr.reduce((sum, el, i) => {
+        // console.log(i)
         return sum += el;
     }, 0)
 }
 
-// console.log(sumArrayReduce([1, 2, 3, 4]))
+console.log(sumArrayReduce([1, 2, 3, 4]))
 
 //Write a function that takes in an array and returns the largest number in 
 // the array
@@ -61,7 +62,22 @@ const largestNum = (arr) => {
     return largest
 }
 
-// console.log(largestNum([-2, -4, -1]));
+const largestNumReduce = arr => {
+    let biggest = arr.reduce((largestNum, el) => {
+        if(largestNum < el) {
+            largestNum = el
+        }
+        return largestNum
+    }, arr[0])
+    return biggest
+}
+
+//IntialValue is optional. 
+// What if I don't add an initialValue?
+// The accumlator will automattically start as the first element in the array. 
+// And the first el will actually be the 2nd element. 
+
+// console.log(largestNumReduce([-2, -4, -1]));
 
 // Reduce - ARRAY METHOD 
 //  - Takes in a callback and an initialStart
