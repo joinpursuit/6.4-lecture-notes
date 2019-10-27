@@ -1,7 +1,6 @@
 // let fruits = ["blueberry", "banana", "kiwi", "cherry"] // GOOD TO HAVE THE SAME TYPE OF DATA!
 // fruits[0] = "rasberry"
 // let nums = [13, 12, 14, 56]
-
 // console.log(fruits.slice(2, 2))
 // console.log(fruits.join(" "))
 // let string = "My dog has fleas";
