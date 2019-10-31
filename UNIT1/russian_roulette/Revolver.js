@@ -27,6 +27,8 @@ class Revolver {
         return fired; 
     }
 }
+
+module.exports = Revolver;
 // let gun = new Revolver(6);
 // gun.addBullet();
 
