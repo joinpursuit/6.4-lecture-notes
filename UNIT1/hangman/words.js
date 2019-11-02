@@ -292,6 +292,7 @@ let allTheWords = [
   "hearing",
   "heart",
   "heat",
+  "hello",
   "help",
   "high",
   "history",

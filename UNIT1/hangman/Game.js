@@ -19,6 +19,7 @@ class Game {
             console.log("Guessed so far: " + this.guessedLetters.join(", "));
         
             this.guesser.displayBoard(this.board);
+            this.ref.displayBoard(this.board);
             let guess = "0"; 
             while(!this.isValidGuess(guess)) {
                 guess = this.guesser.getMove();
@@ -36,6 +37,8 @@ class Game {
         if(this.guessesRemaining > 0) {
             console.log(this.guesser.name + " wins!")
         } else {
+            let winningWord = this.ref.reveal();
+            console.log("word was " + winningWord)
             console.log(this.ref.name + " wins!")
         }
 
@@ -52,5 +55,5 @@ class Game {
 
 let human = new HumanPlayer("corey")
 let robo = new ComputerPlayer();
-let game = new Game({ref: robo, guesser: human})
+let game = new Game({ref: human, guesser: robo})
 game.play();
