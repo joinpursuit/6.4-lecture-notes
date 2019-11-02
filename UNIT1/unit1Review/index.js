@@ -250,3 +250,67 @@ const isPallForLoop = str => {
     return true;    
 }
 // console.log(isPallWhile("aaabbaaa"));
+
+// Add your own myMap to the Array's prototype. 
+Array.prototype.myMap = function(callback) {
+    let result = [];
+    for(let i= 0; i < this.length; i++) {
+        result.push(callback(this[i], i))
+    }
+    return result; 
+}
+// let arr = ["cat", "dog", 'bird'];
+// console.log(
+//     arr.myMap(el => el.toUpperCase())
+// )
+// // Add your own myFilter to the Array's prototype. 
+Array.prototype.myFilter = function(cb) {
+    let result = [];
+    for(let i = 0; i < this.length; i++) {
+        if(cb(this[i], i)) {
+            result.push(this[i])
+        }
+    }
+    return result; 
+}
+// let arr = [1, 2, 3, 4, 5];
+// console.log(
+//     arr.myFilter((el, i) => {
+//         return el % 2
+//     })
+// )
+// Write a function that takes in an array of numbers and a 
+// target number. Return an array of all the paired indicies that add 
+// up to the target. 
+
+const findIndicies = (arr, target) => {
+    let result = [];
+    for(let i = 0; i < arr.length; i++) {
+        for(let j = i + 1; j < arr.length; j++) {
+            if((arr[i] + arr[j]) === target) {
+                result.push([i, j])
+            }
+        }
+    }
+    return result; 
+}
+
+const findIndicies2 = (arr, target) => {
+    let result = [];
+    let searching = {};
+    for(let i = 0; i < arr.length; i++) {
+        let goal = target - arr[i];
+        if(searching[arr[i]] !== undefined) {
+            result.push([searching[arr[i]], i]);
+        } else {
+            searching[goal] = i; 
+        }
+    }    
+    return result; 
+}
+
+
+let nums = [-7, 0, 2, 3, 7, 8, -2]
+let target = 0;
+console.log(findIndicies2(nums, target))
+// Output: [[0, 4], [2, 6]]
