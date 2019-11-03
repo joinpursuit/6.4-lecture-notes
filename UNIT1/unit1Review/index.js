@@ -1,4 +1,5 @@
 
+
 // // Warm up: 
 // // Write a function that takes in an array of people objects
 // // and returns a new array of all the names. 
@@ -310,7 +311,45 @@ const findIndicies2 = (arr, target) => {
 }
 
 
-let nums = [-7, 0, 2, 3, 7, 8, -2]
-let target = 0;
-console.log(findIndicies2(nums, target))
+// let nums = [-7, 0, 2, 3, 7, 8, -2]
+// let target = 0;
+// console.log(findIndicies2(nums, target))
 // Output: [[0, 4], [2, 6]]
+
+// WARM up
+// Write a function that takes in two arrays. 
+// The first array contains elements that should 
+// not be in the second array. Return 
+// a new array without those elements. 
+const removeElements = (arr1, arr2) => {
+    let output = [];
+    for(let i = 0; i < arr2.length; i++) {
+        if(!arr1.includes(arr2[i])) {
+            output.push(arr2[i]);
+        }
+    }
+    return output; 
+}
+
+const removeEls = (arr1, arr2) => arr2.filter(el => !arr1.includes(el))
+
+// console.log(removeEls([5, 8, 9], [1, 2, 3, 4, 5, 6, 9, 10]))
+// => [1, 2, 3, 4, 6, 10]
+
+// Write a function that takes in an array 
+// of strings. Return the seconds longest 
+// string. 
+const secondLargestString = arr => {
+    let largest = "";
+    let secondLargest = "";
+    arr.forEach(string => {
+        if(string.length > largest.length) {
+            secondLargest = largest;
+            largest = string; 
+        } else if (string.length > secondLargest.length){
+            secondLargest = string; 
+        }
+    })
+    return secondLargest;
+}
+console.log(secondLargestString(["hellos", "four", "cat", "fiver"]));
