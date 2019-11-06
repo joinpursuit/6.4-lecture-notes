@@ -14,9 +14,9 @@ const mergeSortedArrays = (arr1, arr2) => {
         //     output.push(arr2.shift)
         // }
     }
-    return output.concat(arr1).concat(arr2); 
+    return [...output, ...arr1, ...arr2]; 
 }
-// console.log(mergeSortedArrays(arr1, arr2))
+console.log(mergeSortedArrays(arr1, arr2))
 //Write a function that takes in a number and determines if that 
 // number is a prime number
 const isPrime = (num) => {
@@ -46,4 +46,4 @@ const primeArray = (num) => {
     }
     return output;
 }
-console.log(primeArray(5));
+// console.log(primeArray(5));
