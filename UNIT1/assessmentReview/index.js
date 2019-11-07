@@ -3,7 +3,18 @@
 // a new array with all elements sorted. Do not use the sort method. 
 let arr1 = [1, 5, 7];
 let arr2 = [1, 3, 4, 6, 10, 12]
+
+
+//   Compose Function: https://www.codewars.com/kata/compose-functions-t-combinator/
+//   Duplicate Arguments: http://www.codewars.com/kata/duplicate-arguments
 // output: [1, 1, 3, 4, 5, 6, 7, 10, 12 ]
+
+
+
+
+
+
+
 const mergeSortedArrays = (arr1, arr2) => {
     let output = [];
     while(arr1.length && arr2.length) {
