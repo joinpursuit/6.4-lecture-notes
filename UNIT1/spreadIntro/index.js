@@ -14,7 +14,7 @@ const adder = (...args) => {
     return sum; 
 }
 
-// console.log(adder(13, 7, 18, 7))
+// console.log(adder(13, 7, 18, 7)) // => 45
 // const arrayCheck = (arr) => {
 //     console.log(...arr)
 // }
@@ -24,9 +24,9 @@ const adder = (...args) => {
 // let arr2 = [...arr];
 // arr2.push(6)
 // console.log(arr);
-// let arr1 = [1, 2, 3]
-// let arr2 = [4, 5, 6];
-// console.log([...arr1, ...arr2])
+let arr1 = [1, 2, 3]
+let arr2 = [4, 5, 6];
+console.log([...arr1, ...arr2]) //=> [1, 2, 3, 4, 5, 6]
 
 // let person = {name: "Pirate", age: 42}
 // let morphPerson = {...person, hair: "HAT"}

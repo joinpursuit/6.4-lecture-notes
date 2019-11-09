@@ -49,9 +49,17 @@ const sumArrayReduce = arr => {
 
 // console.log(sumArrayReduce([1, 2, 3, 4]))
 
-console.log([1, 2, 3, 4].reduce((acc, el) => {
-    return acc + el
-}))
+// console.log(
+//     [1, 2, 3, 4].reduce((acc, el) => {
+//     return acc + el
+// }))
+//  // => 10
+
+// console.log(
+//     [1, 2, 3, 4].reduce((acc, el) => {
+//     return acc + el
+// }, 10))
+//  // => 20
 
 //Write a function that takes in an array and returns the largest number in 
 // the array
