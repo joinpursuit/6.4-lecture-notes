@@ -50,3 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 })
+
+document.querySelector("tag")
+document.querySelector("#idOfTag")
