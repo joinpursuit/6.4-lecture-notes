@@ -1,0 +1,59 @@
+.row {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding-inline-start: 0;
+    border-bottom: 2px solid black;
+}
+
+.row li:first-child {
+    border-right: 2px solid black;
+}
+
+.row li:last-child {
+    border-left: 2px solid black;
+}
+
+.row:last-child {
+    border-bottom: none; 
+}
+
+.row li {
+    padding: 5px;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    font-size: 35px;;
+}
+
+.row li:hover {
+    cursor: pointer;
+}
+
+#playerText {
+    padding: 15px;
+}
+
+#playAgain {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+#playAgain:hover {
+    cursor: pointer;
+}
+
+#ttt {
+    width: min-content;
+    margin: auto; 
+}
+body {
+    text-align: center;
+}
+
+header {
+    font-weight: bold;
+    font-size: 35px;
+    margin-bottom: 25px;
+}
