@@ -1,3 +1,5 @@
+import { node } from "prop-types";
+
 // const onlyOdds = () => {
 //     let output = ""
 //     let strElement = document.querySelector("#string")
@@ -48,8 +50,5 @@ document.addEventListener("DOMContentLoaded", () => {
     // debugger
     
 
-
 })
 
-document.querySelector("tag")
-document.querySelector("#idOfTag")

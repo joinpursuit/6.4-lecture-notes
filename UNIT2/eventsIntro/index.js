@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Add a div with the id="coords".
 //  Using document.addEventListener('mousemove', …), 
 //  update the text of the div with the x and y coordinates of
-//   the mouse cursor.
+//   the mouse cursor.`
 
 
 
