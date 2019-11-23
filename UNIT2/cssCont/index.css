@@ -1,0 +1,35 @@
+/* #first {
+    color: green;
+}
+
+.heading {
+    font-family: cursive;
+}
+
+.heading-list {
+    color: red;
+} */
+
+ul > li {
+    color: green;
+}
+
+button:hover {
+    cursor: pointer;
+    background:black;
+    color: white;
+}
+a:visited {
+    color: brown;
+}
+
+#third::first-letter {
+    color: pink;
+} 
+a[href^="com"] {
+    color: yellow;
+}
+
+* {
+    color: orange;
+}
