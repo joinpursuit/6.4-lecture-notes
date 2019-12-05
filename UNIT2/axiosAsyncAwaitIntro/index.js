@@ -30,5 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   fetchAllCards();
   console.log("Whats up?")
-  await axios.get("jsdklgjsa") // would freak out because not inside of async
+  // await axios.get("jsdklgjsa") // would freak out because not inside of async
 });
+
