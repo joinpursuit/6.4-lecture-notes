@@ -26,8 +26,9 @@ app.get("/people", (req, res) => {
 })
 
 app.post("/newUser", (req, res) => {
-    console.log(req.body);  
-    res.json(req.body);
+    console.log(req.body);
+    people.push(req.body)  
+    res.json({status: "success you add a person", person: req.body});
 })
 
 // create an html page that takes in a name and age from a user
