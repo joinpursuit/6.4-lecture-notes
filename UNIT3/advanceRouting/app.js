@@ -3,8 +3,10 @@ const cors =  require("cors");
 const app = express();
 const port = 3000;
 const usersRouter = require("./routes/users/users.js")
+const postsRouter = require("./routes/posts/posts.js");
 
 app.use("/users", usersRouter)
+app.use("/posts",postsRouter)
 
 // app.get("/users",  (req, res) => {
 //     res.json("all users info");
