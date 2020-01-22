@@ -36,10 +36,18 @@ CREATE TABLE pets (
 
 INSERT INTO users (name, age)
     VALUES ('corsky', 100), 
-            ('jon', 26);
+            ('jon', 26), 
+            ('jhenya', 21),
+            ('celine', 29),
+            ('jerry', 69);
 
     INSERT INTO pets (name, species, age, owner_id)
-        VALUES ('Noboru', 'Cat', 14, 1);
+        VALUES ('Noboru', 'Cat', 14, 1),
+                ('Hatchi', 'Cat', 10, 1),
+                ('Snowball', 'Cat', 12, 3),
+                ('Gruffy', 'Dog', 6, 2),
+                ('Coco', 'Dog', 3, 5), 
+                ('Rosco', 'Cat', 19, NULL);
 
 -- If parent gets deleted cascade will delete children. 
 -- set to null will set the childrens parent id to null 
