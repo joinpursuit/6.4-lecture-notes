@@ -41,10 +41,20 @@ const createUser = async (req, res, next) => {
     }
 }
 
-module.exports = { getUsers, getUser, createUser };
+const deleteUser = async (req, res, next) => {
+    try {
+        await db.none("DELETE FROM users WHERE id= $1", req.params.id);
+        res.status(200).json({
+            status: "success",
+            message: "USER was DELETED"
+        })
+    } catch (err) {
+        next(err)
+    }
+}
 
-// Create a delete route for a user 
-// Then create routes for pets . 
+module.exports = { getUsers, getUser, createUser, deleteUser };
+
+ 
 // newPet 
-// get all pets 
 // get all pets for one user 
