@@ -18,6 +18,8 @@ const getUser = async (req, res, next) => {
         let user = await db.one (
             "SELECT * FROM users WHERE id = $1 ", [ req.params.id ] 
         )
+        let pets = await db.any("SELECT * FROM pets WHERE owner_id = $1", req.params.id);
+        user.pets = pets; 
         res.status(200).json({
             user, 
             status: "success",
@@ -29,6 +31,7 @@ const getUser = async (req, res, next) => {
 }
 
 const createUser = async (req, res, next) => {
+    // {name: 'corey', age: 100} req.body 
     try {
         let user = await db.one("INSERT INTO users (name, age) VALUES (${name}, ${age}) RETURNING *", req.body);
         res.status(200).json({
