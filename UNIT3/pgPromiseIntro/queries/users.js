@@ -16,7 +16,7 @@ const getUsers = async (req, res, next) => {
 const getUser = async (req, res, next) => {
     try {
         let user = await db.one (
-            "SELECT * FROM users WHERE id = $1 ", [ req.params.id ] 
+            "SELECT * FROM users WHERE id = " + req.params.id  
         )
         let pets = await db.any("SELECT * FROM pets WHERE owner_id = $1", req.params.id);
         user.pets = pets; 
@@ -61,3 +61,5 @@ module.exports = { getUsers, getUser, createUser, deleteUser };
  
 // newPet 
 // get all pets for one user 
+
+
