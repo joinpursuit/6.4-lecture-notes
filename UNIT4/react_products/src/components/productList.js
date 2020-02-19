@@ -1,10 +1,9 @@
 // Make a class componenet with 
 // a list of products in it's state. 
 // Renders each product via Product component. 
-
 import React, { Component } from 'react';
 import ProductDisplay from './ProductDisplay';
-
+import CartList from './CartList';
 class ProductList extends Component {
   state = { products: [
         {
@@ -34,6 +33,16 @@ class ProductList extends Component {
       ],
     cart: []}
   handleAddToCart = (prodName) => {
+    let item = this.state.products.find(product => {
+      return product.name === prodName && product.quantity > 0
+    });
+    if(item) {
+      this.setState((prevState) => {
+        return {
+          cart: [...prevState.cart, item]
+        }
+      })
+    }
     let newProdList = this.state.products.map(product => {
       if(product.name === prodName && product.quantity > 0) {
         return {
@@ -50,6 +59,7 @@ class ProductList extends Component {
   }
 
   render() { 
+    console.log(this.state.cart)
     let prods = this.state.products.map((product, i) => {
       return <ProductDisplay key={product.name} 
               name={product.name}
@@ -59,9 +69,15 @@ class ProductList extends Component {
               handleAddToCart={this.handleAddToCart} />
     })
     return ( 
+      <>
       <div>
         {prods}
       </div>
+      <div>
+        Items in cart: 
+        <CartList items={this.state.cart}/>
+      </div>
+      </>
      );
   }
 }
