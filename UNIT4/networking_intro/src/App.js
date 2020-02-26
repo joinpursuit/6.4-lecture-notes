@@ -1,9 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 // import './App.csss';
-import DogApp from './DogApp';
-import DogSelector from './DogSelector';
-import DogsByBreed from './DogsByBreed';
+import DogApp from './components/DogApp';
+import DogSelector from './components/DogSelector';
+import DogsByBreed from './components/DogsByBreed';
 class App extends React.Component {
   state = { breed: "" }
 
