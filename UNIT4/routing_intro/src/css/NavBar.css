@@ -1,0 +1,8 @@
+nav {
+    display: flex; 
+    justify-content: space-around;
+}
+
+.active {
+    color: green;
+}

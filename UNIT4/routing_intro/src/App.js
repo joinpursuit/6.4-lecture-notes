@@ -2,13 +2,29 @@ import React from 'react';
 import DogApp from './components/DogApp';
 import Clock from './components/Clock';
 import Form from './components/Form';
+import Home from './components/Home';
+import NavBar from './components/NavBar';
+import Person from './components/Person';
 
+import { Route, Switch } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <Form/>
-      <Clock />
-      <DogApp/>
+        <NavBar/>
+    <Switch >
+        <Route path={"/form"} component={Form} />
+        <Route path={"/clock"} component={Clock} />
+          <Route path={"/dogs"} component={DogApp} />
+        <Route path={"/people/:id"}>
+          <Person />
+        </Route>
+        <Route  exact path={"/"} >
+            <Home/>
+            <Home/>
+        </Route>
+        <Route path="*" render={() => <div>Something Went Wrong</div>} />
+    </Switch>
+      
     </div>
   );
 }

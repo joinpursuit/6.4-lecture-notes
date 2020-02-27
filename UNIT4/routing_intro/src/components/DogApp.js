@@ -10,7 +10,7 @@ class DogApp extends Component {
   }
   render() {
     const { breed } = this.state; 
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div className="App">
       <DogSelector breed={breed} handleBreed={this.handleBreed }/>

@@ -10,23 +10,22 @@ class Form extends React.Component {
   };
 
     handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+      this.setState({
+        [e.target.name]: e.target.value
+      })
     }
 
   handleAgree = () => {
-    this.setState(prevState => {
-      return {
-        agree: !prevState.agree
-      };
-    });
+    this.setState(prevState => ({
+       agree: !prevState.agree 
+      })
+    )
   };
 
   handleSubmit = e => {
     e.preventDefault();
     let { firstName, lastName } = this.state;
-
+    this.props.history.push(`/people/${firstName}`)
     console.log({
       first_name: firstName,
       last_name: lastName
