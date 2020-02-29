@@ -1,31 +1,32 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
-class DogSelector extends Component {
-    state = { breeds: [] };
-    async componentDidMount() {
+const DogSelector  = ({breed, handleBreed}) => {
+    const [ breeds, setBreeds ] = useState([]);
+
+    const fetchBreeds = async () => {
         try {
             let res = await axios.get("https://dog.ceo/api/breeds/list/all");
-            this.setState({breeds: Object.keys(res.data.message)})
+            setBreeds(Object.keys(res.data.message));
         } catch (error) {
-            this.setState({breeds: []});
+            setBreeds([]);
             console.log(error);
         }
     }
-    render() { 
-        const options = this.state.breeds.map(breed => {
-            return <option value={breed} key={breed}>{breed}</option>
-        })
+    useEffect(() => {
+        fetchBreeds();
+    }, [])
 
-        const {handleBreed, breed} = this.props; 
-        return ( 
-            <select onChange={(e) => handleBreed(e.target.value)}
-            value={breed}>
-                <option value={""} disabled>Select Breed</option>
-                {options}
-            </select>
-         );
-    }
+    const options = breeds.map(breed => {
+        return <option value={breed} key={breed}>{breed}</option>
+    })
+    return ( 
+        <select onChange={(e) => handleBreed(e.target.value)}
+        value={breed}>
+            <option value={""} disabled>Select Breed</option>
+            {options}
+        </select>
+        );    
 }
  
 export default DogSelector;

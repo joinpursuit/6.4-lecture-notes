@@ -1,37 +1,39 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import Dog from './Dog';
-class DogsByBreed extends Component {
-    state = { dogPics: [], numberOfDogs: 10  }
-
-    componentDidUpdate(prevProps) {
-        const oldBreed = prevProps.breed; 
-        const newBreed = this.props.breed; 
-        const numberOfDogs = this.state.numberOfDogs;
-        if(oldBreed !== newBreed) {
-            this.getDogPics(newBreed, numberOfDogs);
-        }
-    }
-
-    getDogPics = async (breed, numberOfDogs) => {
+const DogsByBreed = ({breed}) => {
+    const [ dogPics, setDogPics ] = useState([]);
+    const [numberOfDogs, setNumberOfDogs] = useState(10)
+    // const [ didMount, setDidMount ] = useState(false);
+    const didMount = useRef(false);
+    
+    const getDogPics = async (breed, numberOfDogs) => {
         const breedURL = `https://dog.ceo/api/breed/${breed}/images/random/${numberOfDogs}`;
         try {
             let res = await axios.get(breedURL);
-            this.setState({dogPics: res.data.message})
+            setDogPics(res.data.message)
         } catch (error) {
-            this.setState({dogPics: []});
+            setDogPics([])
         }
     }
-    render() { 
-        let dogs = this.state.dogPics.map(dog => {
-            return <Dog img={dog} key={dog}/>
-        })
-        return ( 
-            <div>
-                {dogs}
-            </div>
-         );
-    }
+
+    useEffect(() => {
+        if(didMount.current) {
+            getDogPics(breed, numberOfDogs);
+        } else {
+            didMount.current = true;
+            // setDidMount(true);
+        }
+    }, [breed])
+
+    let dogs = dogPics.map(dog => {
+        return <Dog img={dog} key={dog}/>
+    })
+    return ( 
+        <div>
+            {dogs}
+        </div>
+        );
 }
  
 export default DogsByBreed;
