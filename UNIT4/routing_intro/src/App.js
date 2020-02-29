@@ -5,6 +5,7 @@ import Form from './components/Form';
 import Home from './components/Home';
 import NavBar from './components/NavBar';
 import Person from './components/Person';
+import Login from './components/Login';
 
 import { Route, Switch } from 'react-router-dom';
 function App() {
@@ -12,6 +13,9 @@ function App() {
     <div className="App">
         <NavBar/>
     <Switch >
+        <Route path={"/login"}>
+          <Login/>
+        </Route>
         <Route path={"/form"} component={Form} />
         <Route path={"/clock"} component={Clock} />
           <Route path={"/dogs"} component={DogApp} />
