@@ -6,7 +6,7 @@ import Home from './components/Home';
 import NavBar from './components/NavBar';
 import Person from './components/Person';
 import Login from './components/Login';
-
+import Movies from './components/Movies';
 import { Route, Switch } from 'react-router-dom';
 function App() {
   return (
@@ -15,6 +15,9 @@ function App() {
     <Switch >
         <Route path={"/login"}>
           <Login/>
+        </Route>
+        <Route path={"/movies"}>
+          <Movies/>
         </Route>
         <Route path={"/form"} component={Form} />
         <Route path={"/clock"} component={Clock} />
