@@ -1,48 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import { useInput } from '../util/customHooks';
+import { useHistory } from 'react-router-dom';
 
-class Form extends React.Component {
-  state = {
-    firstName: "",
-    lastName: "",
-    agree: false,
-    favoriteFlavor: "chocolate",
-    pizza: "yes"
-  };
+const Form = () => {
+  const firstName = useInput("")
+  const lastName = useInput("")
+  const favoriteFlavor = useInput("chocolate")
+ const [agree, setAgree] = useState(false);
+ const [pizza, setPizza] = useState("yes");
 
-    handleChange = (e) => {
-      this.setState({
-        [e.target.name]: e.target.value
-      })
-    }
+  const handleAgree = () => setAgree(prevAgree => !prevAgree)
 
-  handleAgree = () => {
-    this.setState(prevState => ({
-       agree: !prevState.agree 
-      })
-    )
-  };
-
-  handleSubmit = e => {
+  const history = useHistory(); 
+  const handleSubmit = e => {
     e.preventDefault();
-    let { firstName, lastName } = this.state;
-    this.props.history.push(`/people/${firstName}`)
+    history.push(`/people/${firstName.value}`)
     console.log({
-      first_name: firstName,
-      last_name: lastName
+      first_name: firstName.value,
+      last_name: lastName.value
     });
   };
 
-  render() {
-    let { firstName, lastName, agree, favoriteFlavor, pizza } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>
           First Name:
           <input
             type="text"
-            value={firstName}
-            name="firstName"
-            onChange={this.handleChange}
+            {...firstName}
           />
         </label>
         <label>
@@ -50,17 +35,13 @@ class Form extends React.Component {
           <input
             type="text"
             placeholder="Enter Your last name"
-            value={lastName}
-            name="lastName"
-            onChange={this.handleChange}
+            {...lastName}
           />
         </label>
         <label>
           Favorite Ice Cream:
           <select
-            value={favoriteFlavor}
-            name="favoriteFlavor"
-            onChange={this.handleChange}
+           {...favoriteFlavor}
           >
             <option value="vanilla">vanilla</option>
             <option value="strawberry">strawberry</option>
@@ -75,7 +56,7 @@ class Form extends React.Component {
             value="yes"
             name="pizza"
             checked={pizza === "yes"}
-            onChange={this.handleChange}
+            onChange={(e) => setPizza(e.target.value)}
           />
         </label>
         <label>
@@ -85,7 +66,7 @@ class Form extends React.Component {
             value="no"
             name="pizza"
             checked={pizza === "no"}
-            onChange={this.handleChange}
+            onChange={(e) => setPizza(e.target.value)}
           />
         </label>
         <label>
@@ -93,14 +74,13 @@ class Form extends React.Component {
           <input
             type="checkbox"
             checked={agree}
-            onChange={this.handleAgree}
+            onChange={handleAgree}
             required
           />
         </label>
         <button type="submit">Submit</button>
       </form>
     );
-  }
 }
 
 export default Form;

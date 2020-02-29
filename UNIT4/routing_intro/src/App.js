@@ -19,7 +19,10 @@ function App() {
         <Route path={"/movies"}>
           <Movies/>
         </Route>
-        <Route path={"/form"} component={Form} />
+        <Route path={"/form"}>
+          <Form/>
+        </Route>
+          
         <Route path={"/clock"} component={Clock} />
           <Route path={"/dogs"} component={DogApp} />
         <Route path={"/people/:id"}>
