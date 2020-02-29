@@ -1,29 +1,22 @@
 
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 
-class Clock extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {time: new Date().toLocaleString()}
-    }
+const Clock = () => {
+    const [ time, setTime ] = useState(new Date().toLocaleString());
 
-    componentDidMount() {
-        this.timer = setInterval(() => {
-            // console.log(new Date().toLocaleString())
-            this.setState({time: new Date().toLocaleString()})
-        }, 1000)
-    }
+    useEffect(() => {
+        const timer = setInterval(() => {
+            console.log(new Date().toLocaleString())
+            setTime(new Date().toLocaleString());   
+            }, 1000)
 
-    componentWillUnmount() {
-        clearInterval(this.timer);
-    }
-    render() {
-        return(
-            <div>
-                {this.state.time}
-            </div>
+            return () => clearInterval(timer);
+    }, [])
+    return(
+        <div>
+            {time}
+        </div>
         )
-    }
 }
 
 export default Clock;
