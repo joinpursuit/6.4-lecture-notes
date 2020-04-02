@@ -5,9 +5,8 @@ class Clock extends React.Component {
     constructor(props) {
         super(props)
         this.state = {time: new Date().toLocaleString()}
-        // debugger
+        // debugger <(._________.)> <(^-^<) <(^-^)> (>^-^)> :<
     }
-
     componentDidMount() {
         // debugger
         // axios.get("moves")
@@ -17,7 +16,7 @@ class Clock extends React.Component {
         }, 1000)
         // this.setState({value: 5})
     }
-
+    
     componentWillUnmount() {
         clearInterval(this.timer);
     }
