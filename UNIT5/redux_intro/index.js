@@ -1,6 +1,7 @@
-const { createStore } = require('redux');
-const { ADD_APPLE, ADD_BANANA, CLEAR_FRUITS} = require('./actions/actionTypes');
-const { addApple, addBanana, clearFruits } = require("./actions/fruitActions");
+const { createStore, applyMiddleware } = require('redux');
+const { ADD_APPLE, ADD_BANANA, CLEAR_FRUITS, ADD_FRUIT} = require('./actions/actionTypes');
+const {  clearFruits, addFruit } = require("./actions/fruitActions");
+// const {logger} = require('redux-logger');
 // const adder = (x) => {
 //     return (y) => {
 //         return x + y; 
@@ -64,10 +65,12 @@ const calc = () => {
 
 const fruitStand = (state = [], action) => {
     switch (action.type) {
-        case ADD_BANANA:
-            return [...state, "banana"]
-        case ADD_APPLE:
-            return [...state, "apple"]
+        case ADD_FRUIT:
+            return [...state, action.payload]
+        // case ADD_BANANA:
+        //     return [...state, "banana"]
+        // case ADD_APPLE:
+        //     return [...state, "apple"]
         case CLEAR_FRUITS: 
             return [];
         default:
@@ -75,15 +78,25 @@ const fruitStand = (state = [], action) => {
     }
 }
 
-const store = createStore(fruitStand)
-store.subscribe(() => {
-    console.log(store.getState())
-})
+
+const logger = store => next => action => {
+    console.log("Action Received: ", action);
+    console.log("Old State: ", store.getState());
+    const result = next(action);
+    console.log("New State: ", store.getState());
+    return result;
+}
+
+const store = createStore(fruitStand, [], applyMiddleware(logger))
+// store.subscribe(() => {
+//     console.log(store.getState())
+// })
 // let storeHasChangedUnsub = store.subscribe(() => {
 //                                 console.log("store has changed")
 //                             })
-store.dispatch(addBanana());
-store.dispatch(addApple());
+store.dispatch(addFruit("banana"));
+store.dispatch(addFruit("apple"));
+store.dispatch(addFruit("kiwi"));
 store.dispatch(clearFruits());
 
 //TODO: 
