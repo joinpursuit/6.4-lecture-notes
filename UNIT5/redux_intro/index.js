@@ -84,6 +84,14 @@ store.subscribe(() => {
 //                             })
 store.dispatch(addBanana());
 store.dispatch(addApple());
+store.dispatch(clearFruits());
+
+//TODO: 
+// Make this cleaner! Add a new type for adding a generic fruit. 
+// You'll also need to add a new action creator. Should it take arguments? 
+// Update your reducer to take your new action. Try it out and test it. 
+// Be back in the room in 15 minutes. 
+
 // store.dispatch({type: "ADD_BANANA"})
 // storeHasChangedUnsub();
 // store.dispatch({type: "ADD_APPLE"})
