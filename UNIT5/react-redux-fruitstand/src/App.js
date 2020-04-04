@@ -1,11 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import FruitStand from './components/FruitStand';
+// import FruitStandContainer from './containers/FruitStandContainer';
+// import Wrapper from './components/Wrapper';
 
 function App() {
   return (
     <div className="App">
-    hello
+      {/* <Wrapper> */}
+        {/* <FruitStandContainer /> */}
+        <FruitStand />
+      {/* </Wrapper> */}
     </div>
   );
 }

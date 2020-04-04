@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { addFruit } from './actions/fruitStandActions';
-
-window.addFruit = addFruit;
+import { Provider } from 'react-redux';
+// import { addFruit } from './actions/fruitStandActions';
+import store from './store/store';
+// window.addFruit = addFruit;
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

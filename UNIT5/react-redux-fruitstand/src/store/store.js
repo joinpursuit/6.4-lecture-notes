@@ -1,5 +1,6 @@
 import { createStore } from 'redux';
+import fruitStandReducer from '../reducers/fruitStandReducers';
 
-const store = createStore(reducer) // takes in reducer, initalState, enhancers / middleware 
+const store = createStore(fruitStandReducer) // takes in reducer, initalState, enhancers / middleware 
 
 export default store; 
