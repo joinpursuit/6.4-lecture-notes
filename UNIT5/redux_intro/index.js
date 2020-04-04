@@ -63,6 +63,15 @@ const calc = () => {
  // { type: "ADD_FRUIT", payload: "banana"}
  // { type: "CLEAR_FRUITS"}
 
+// posts: [ {id: 1, body: "great move", commetns: [ {id: 5, author_id: 6}]}]
+// posts: {
+//     1: { id: 1, body: "great movies", comments: [5]}
+// }
+// comments : 
+//     { 
+//         5: { id: 5, author_id: 6}
+//     }
+
 const fruitStand = (state = [], action) => {
     switch (action.type) {
         case ADD_FRUIT:
