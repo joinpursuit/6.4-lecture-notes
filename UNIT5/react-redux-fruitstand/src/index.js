@@ -7,6 +7,9 @@ import { Provider } from 'react-redux';
 // import { addFruit } from './actions/fruitStandActions';
 import store from './store/store';
 // window.addFruit = addFruit;
+// import { hireFarmer } from './actions/farmerActions';
+// window.hireFarmer = hireFarmer;
+// window.store = store; 
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,3 +24,6 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+// Create a component that lists all the farmers and a componenet that 
+// adds a new farmer to your store. 

@@ -2,7 +2,9 @@ import React from 'react';
 import  { useSelector  } from 'react-redux'
 
 const FruitCart = () => {
-    const fruits = useSelector(state => state);
+    const fruits = useSelector(state => { 
+     return  state.fruits;
+    });
     return (
         <ul>
             {fruits.map((fruit, i) => {
