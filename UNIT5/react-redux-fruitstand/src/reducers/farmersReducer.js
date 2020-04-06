@@ -13,10 +13,23 @@ import { HIRE_FARMER, PAY_FARMER } from '../actions/actionTypes';
 //     }
 // }
 
+// PURE FUNCTION : 
+// A function that given the same input will always give the same output. 
+// A pure function must never have side effects. 
+
+const adder = (a, b) => {  // pure function
+    return a + b; 
+}
+
+const sort = (arr) => { // NOT pure function
+    return arr.sort((a, b) => a - b);
+}
+
+
 const _defaultState = {};
 
 const farmersReducer = (state = _defaultState, action ) => {
-    Object.freeze(state);
+    Object.freeze(state); // This will throw an error if you accidentally mutate the state 
     const newState = { ...state };
     switch (action.type) {
         case HIRE_FARMER:

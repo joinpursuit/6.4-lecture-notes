@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import  { useParams } from 'react-router-dom'; // instead of ownProps
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addFruit } from '../../actions/fruitStandActions';
 // { 
 //     fruits: [],

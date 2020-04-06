@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 const FarmerDisplay = () => {
     const farmers = useSelector((state) => {
+        debugger
         return Object.values(state.farmers);
     })
     return (
