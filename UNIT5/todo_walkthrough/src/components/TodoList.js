@@ -12,7 +12,6 @@ const filterTodos = (todos, filter) => {
 const TodoList = () => {
     const todos = useSelector(state => Object.values(state.todos));
     const filter = useSelector(state => state.visibilityFilter);
-
     return(
         <ul>
             {filterTodos(todos,filter).reverse().map(todo => {

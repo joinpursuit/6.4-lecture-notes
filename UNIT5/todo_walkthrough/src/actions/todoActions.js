@@ -1,9 +1,9 @@
 import { RECEIVE_TODO, TOGGLE_TODO } from "./actionTypes";
-import { receiveErrors } from './errorActions';
+import { receiveErrors, clearErrors } from './errorActions';
 
 const addTodoToDatabase = async (todo) => {
     if(todo.body === "soda") throw Error("No Soda Allowed")
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    await new Promise((resolve) => setTimeout(resolve, 500));
     return {data: { message: "Todo Added", todo}}
 }
 
@@ -16,14 +16,17 @@ const addTodoToDatabase = async (todo) => {
 //BONUS: Add a spinner to match you loading state. 
 // Handle and display errors to users. 
 
-export const createTodo = (todo) => async (dispatch) => {
+export const createTodo = (todo) => async (dispatch, getState) => {
     try {
+        dispatch(clearErrors())
         // dispatch(toggleLoading())
         let res = await addTodoToDatabase(todo);
         // dispatch(toggleLoading())
+        res.data.todo.id = getState().nextId
         dispatch(receiveTodo(res.data.todo))
     } catch (err) {
         dispatch(receiveErrors(err.message))
+        //dispatch(toggleLoading())
     }
 }
 

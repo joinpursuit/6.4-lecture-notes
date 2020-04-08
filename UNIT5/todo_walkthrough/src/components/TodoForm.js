@@ -7,14 +7,17 @@ const TodoForm = () => {
     const dispatch = useDispatch();
     const id = useSelector(state => state.nextId);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(createTodo({
-           body, 
-           id,
-           complete: false
-        }))
+        await dispatch(
+          createTodo({
+            body,
+            // id,
+            complete: false,
+          })
+        )
         setBody("")
+        
     }
     return(
         <form onSubmit={handleSubmit}>
