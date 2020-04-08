@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { receiveTodo } from '../actions/todoActions';
+import { createTodo } from '../actions/todoActions';
 
 const TodoForm = () => {
     const [ body, setBody ] = useState("")
@@ -9,7 +9,7 @@ const TodoForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(receiveTodo({
+        dispatch(createTodo({
            body, 
            id,
            complete: false
