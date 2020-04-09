@@ -14,7 +14,8 @@ const addTodoToDatabase = async (todo) => {
 // These need to be saved into your backend. 
 
 //BONUS: Add a spinner to match you loading state. 
-// Handle and display errors to users. 
+// Handle and display errors to users.
+// Add steps for each todo 
 
 export const createTodo = (todo) => async (dispatch, getState) => {
     try {
