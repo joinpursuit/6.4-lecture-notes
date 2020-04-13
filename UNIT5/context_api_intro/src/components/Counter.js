@@ -1,9 +1,8 @@
 import React, {useContext} from 'react';
-import { Context } from '../App';
+import { CounterContext } from '../providers/CounterProvider';
 
 const Counter = () => {
-    const {count} = useContext(Context);
-    debugger
+    const { count } = useContext(CounterContext);
     return (
         <div>
             <h1>Counter</h1>
