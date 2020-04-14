@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { CounterContext } from "../providers/CounterProvider";
+import { increment, decrement } from '../actions/counterActions';
 
 const CounterUpdater = () => {
-    const { increment, decrement } = useContext(CounterContext);
+    const { dispatch } = useContext(CounterContext);
     return (
         <div>
-            <button onClick={increment}>+</button>
-            <button onClick={decrement}>-</button>
+            <button onClick={() => dispatch(increment())}>+</button>
+            <button onClick={() => dispatch(decrement())}>-</button>
         </div>
     )
 }
