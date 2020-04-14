@@ -3,7 +3,11 @@ import './App.css';
 import Counter from './components/Counter';
 import CounterUpdater from './components/CounterUpdater';
 import CounterProvider from './providers/CounterProvider';
+import TodosProvider from './providers/TodosProvider';
 import ClassCounter from './components/classCounter';
+import TodosIndex from './components/TodosIndex';
+import TodoForm from './components/TodoForm';
+
 // export const Context = createContext();
 
 function App() {
@@ -15,11 +19,17 @@ function App() {
   return (
     <div className="App">
       {/* <Context.Provider value={{count, increment, decrement}}> */}
-      <CounterProvider>
-        <Counter/>
-        <CounterUpdater />
-        <ClassCounter />
-      </CounterProvider>
+      <TodosProvider>
+
+        <CounterProvider>
+          <Counter/>
+          <CounterUpdater />
+          <ClassCounter />
+        </CounterProvider>
+
+        <TodoForm />
+        <TodosIndex />
+      </TodosProvider>
       {/* </Context.Provider> */}
     </div>
   );
