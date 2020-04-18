@@ -1,22 +1,18 @@
 import React from 'react';
 import './App.css';
-import FruitStand from './components/Fruits/FruitStand';
-import FruitCart from './components/Fruits/FruitCart';
-import FarmerDisplay from './components/Farmers/FarmerDisplay';
-import CreateFarmer from './components/Farmers/CreateFarmer';
-// import FruitStandContainer from './containers/FruitStandContainer';
-// import Wrapper from './components/Wrapper';
+import FruitStand from './features/fruitStand/FruitStand';
+import FruitCart from './features/fruitStand/FruitCart';
+import FarmerDisplay from './features/farmers/FarmerDisplay';
+import CreateFarmer from './features/farmers/CreateFarmer';
+
 
 function App() {
   return (
     <div className="App">
-      {/* <Wrapper> */}
-        {/* <FruitStandContainer /> */}
         <FruitStand />
         <FruitCart/>
         <FarmerDisplay/>
         <CreateFarmer/>
-      {/* </Wrapper> */}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { hireFarmer } from '../../actions/farmerActions';
+import { hireFarmer } from './farmersSlice';
 import { useDispatch } from 'react-redux';
-let nextId = 3;
+// let nextId = 3;
 
 const CreateFarmer = () => {
     const [name, setName] = useState("");
@@ -10,7 +10,6 @@ const CreateFarmer = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(hireFarmer({
-            id: nextId++, 
             name
         }))
         setName("");

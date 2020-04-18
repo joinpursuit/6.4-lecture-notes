@@ -1,10 +1,18 @@
-import { createStore } from 'redux';
-import rootReducer from '../reducers/rootReducer';
-const store = createStore(rootReducer, {fruits: [], 
-                                        farmers:  { 
-                                            1: { id: 1, name: 'corey', paid: false },
-                                            2: { id: 2, name: 'jon', paid: false }
-                                        }                                        
-}) // takes in reducer, initalState, enhancers / middleware 
+import { configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
+import logger from 'redux-logger';
+import fruits from "../features/fruitStand/fruitStandSlice";
+import farmers from "../features/farmers/farmersSlice";
 
-export default store; 
+const reducer = {
+  fruits,
+  farmers,
+};
+
+const middleware = [...getDefaultMiddleware(), logger];
+
+export default configureStore({
+    reducer, 
+    middleware
+});
+
+

@@ -1,10 +1,9 @@
 import React from 'react';
 import  { useSelector  } from 'react-redux'
+import { selectFruits } from './fruitStandSlice';
 
 const FruitCart = () => {
-    const fruits = useSelector(state => { 
-     return  state.fruits;
-    });
+    const fruits = useSelector(selectFruits);
     return (
         <ul>
             {fruits.map((fruit, i) => {
