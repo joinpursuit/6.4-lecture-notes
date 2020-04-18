@@ -1,0 +1,16 @@
+.light {
+    background: white;
+    color: black;
+}
+
+.black {
+    background: black;
+    color: white;
+}
+
+.light .homeHeader {
+    color: green;
+}
+.dark .homeHeader {
+    color: pink;
+}

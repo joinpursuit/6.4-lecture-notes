@@ -5,6 +5,7 @@ import { TodosContext } from '../providers/TodosProvider';
 class ClassCounter extends Component {
     // static contextType = CounterContext;
     render() { 
+        // this.context; 
         return (
             <CounterContext.Consumer>
              {count => {

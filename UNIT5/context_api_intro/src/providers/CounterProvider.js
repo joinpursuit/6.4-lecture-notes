@@ -1,6 +1,6 @@
 import React, { createContext, useState, useReducer } from 'react';
 import CounterReducer from '../reducers/CounterReducer';
-export const CounterContext = createContext();
+export const CounterContext = createContext("defaultValue");
 
 const CounterProvider = (props) => {
       const [count, dispatch] = useReducer(CounterReducer, 0);

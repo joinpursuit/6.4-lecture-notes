@@ -1,0 +1,14 @@
+nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+.light {
+    background: white;
+    color: black;
+}
+
+.dark {
+    background: black;
+    color: white;
+}
