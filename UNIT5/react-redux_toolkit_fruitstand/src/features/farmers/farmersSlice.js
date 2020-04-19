@@ -10,8 +10,8 @@ export const farmersSlice = createSlice({
     },
     reducers: {
         hireFarmer: {
-            reducer: (state, {payload}) => {
-                state[payload.id] = payload;
+            reducer: (state, action) => {
+                state[action.payload.id] = action.payload;
             },
             prepare: (farmer) => {
                 return { payload: {id: id++, ...farmer, paid: false}}
