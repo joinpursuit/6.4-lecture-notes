@@ -21,3 +21,29 @@ export const asyncIncrement = () => (dispatch) => {
 
 export const { increment, decrement } = counterSlice.actions;
 export default counterSlice.reducer; 
+
+
+
+
+
+
+
+
+import { createSlice } from "@reduxjs/toolkit";
+import { addTodo } from '../features/todos/todosSlice';
+
+export const loadingSlice = createSlice({
+  name: "loading",
+  initialState: false,
+  reducers: {
+    toggleLoading: (state) => !state
+  },
+  extraReducers: {
+    [addTodo]: (state, action) => {
+      return true; 
+    }
+  }
+});
+
+export const { addTodo } = loadingSlice.actions;
+export default loadingSlice.reducer; 
