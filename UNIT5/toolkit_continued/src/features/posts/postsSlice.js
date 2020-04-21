@@ -59,7 +59,12 @@ export const postsSlice = createSlice({
             reducer: (state, action) => { state.unshift(action.payload) },
             prepare: (post) => ({ payload: {id: id++, title: post }})
         },
-        receiveAllPosts: (state, action) => action.payload
+        receiveAllPosts: (state, action) => action.payload,
+        deletePost: (state, action) => { // id to remove is action.payload
+          // return state.filter(post => post.id !== Number(action.payload));
+          let postIdx = state.findIndex(post => post.id === parseInt(action.payload));
+          state.splice(postIdx, 1);
+        }
     }, 
     extraReducers: {
       [fetchAllPosts.fulfilled]: (state, {payload} ) => payload
@@ -71,6 +76,6 @@ export const postsSlice = createSlice({
 
 export const selectPosts = state => state.posts; 
 
-export const { addPost, receiveAllPosts } = postsSlice.actions; 
+export const { addPost, receiveAllPosts, deletePost } = postsSlice.actions; 
 export default postsSlice.reducer; 
 
