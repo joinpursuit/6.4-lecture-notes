@@ -1,19 +1,23 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+// import { toggleLoading } from '../loading/loadingSlice';
 import axios from 'axios';
 
 const slowCode = async () => {
      return new Promise(function (resolve, reject) {
-        setTimeout(resolve, 5000);
+        setTimeout(resolve, 3000);
       })
 }
 
 // export const fetchAllPosts = () => async dispatch => {
 //     try {
-//       const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
-//       dispatch(receiveAllPosts(res.data))
-//     } catch (err) {
+//           dispatch(toggleLoading());
+//           await slowCode();
+//           const res = await axios.get( "https://jsonplaceholder.typicode.com/posts");
+//           dispatch(receiveAllPosts(res.data));
+//           dispatch(toggleLoading())
+//         } catch (err) {
+//            dispatch(toggleLoading());
 //         //dispatch(receiveError(err.message))
-//         throw Error(err.message);
 //     }
 // }
 // Add a loadingSlice to this app. And update it while fetchAllPosts is happening. 
