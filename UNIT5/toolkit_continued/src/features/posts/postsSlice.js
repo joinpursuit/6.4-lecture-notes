@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-// import { toggleLoading } from '../loading/loadingSlice';
+import { toggleLoading } from '../loading/loadingSlice';
+import { receiveErrors, clearErrors } from '../errors/errorsSlice';
 import axios from 'axios';
 
 const slowCode = async () => {
@@ -8,22 +9,23 @@ const slowCode = async () => {
       })
 }
 
-// export const fetchAllPosts = () => async dispatch => {
-//     try {
-//           dispatch(toggleLoading());
-//           await slowCode();
-            // const num = Math.floor(Math.random() * 2);
-            // if (num === 0) {
-            //   throw Error("NETWORK ERROR");
-            // }
-//           const res = await axios.get( "https://jsonplaceholder.typicode.com/posts");
-//           dispatch(receiveAllPosts(res.data));
-//           dispatch(toggleLoading())
-//         } catch (err) {
-//            dispatch(toggleLoading());
-//         //dispatch(receiveError(err.message))
-//     }
-// }
+export const fetchAllPosts = () => async dispatch => {
+    try {
+          dispatch(clearErrors());
+          dispatch(toggleLoading());
+          await slowCode();
+            const num = Math.floor(Math.random() * 2);
+            if (num === 0) {   
+              throw Error("NETWORK ERROR");
+            }
+          const res = await axios.get( "https://jsonplaceholder.typicode.com/posts");
+          dispatch(receiveAllPosts(res.data));
+          dispatch(toggleLoading())
+        } catch (err) {
+          dispatch(receiveErrors(err.message))
+           dispatch(toggleLoading());
+    }
+}
 // Add the ability for us to be able to delete individual posts by 
 // clicking on the post. 
 // Add an errors slice. Half the time we try and fetchAllPosts 
@@ -31,21 +33,21 @@ const slowCode = async () => {
 // give them the option of re-fetching all our posts. 
 
 
-export const fetchAllPosts = createAsyncThunk(
-  "posts/fetchAllPosts",
-  async () => {
-    try {
-      await slowCode();
-      if (Math.floor(Math.random() * 2)) {
-        throw Error("NETWORK ERROR");
-      }
-      const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
-      return res.data;
-    } catch (err) {
-      throw Error(err.message);
-    }
-  }
-);
+// export const fetchAllPosts = createAsyncThunk(
+//   "posts/fetchAllPosts",
+//   async () => {
+//     try {
+//       await slowCode();
+//       if (Math.floor(Math.random() * 2)) {
+//         throw Error("NETWORK ERROR");
+//       }
+//       const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+//       return res.data;
+//     } catch (err) {
+//       throw Error(err.message);
+//     }
+//   }
+// );
 
 
 //Each post to have a title, and an id. 
@@ -66,10 +68,10 @@ export const postsSlice = createSlice({
           state.splice(postIdx, 1);
         }
     }, 
-    extraReducers: {
-      [fetchAllPosts.fulfilled]: (state, {payload} ) => payload
+    // extraReducers: {
+    //   [fetchAllPosts.fulfilled]: (state, {payload} ) => payload
 
-    }
+    // }
 })
 
 

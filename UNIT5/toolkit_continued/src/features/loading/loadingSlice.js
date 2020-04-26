@@ -7,11 +7,11 @@ export const loadingSlice = createSlice({
     reducers: {
         toggleLoading: (state) => !state
     },
-    extraReducers: {
-        [fetchAllPosts.pending]: () => true,
-        [fetchAllPosts.fulfilled]: () => false,
-        [fetchAllPosts.rejected]: () => false
-    }
+    // extraReducers: {
+    //     [fetchAllPosts.pending]: () => true,
+    //     [fetchAllPosts.fulfilled]: () => false,
+    //     [fetchAllPosts.rejected]: () => false
+    // }
 })
 
 export const selectLoading = state => state.loading; 

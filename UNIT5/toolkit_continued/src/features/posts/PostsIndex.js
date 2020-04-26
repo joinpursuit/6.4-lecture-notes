@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectPosts, fetchAllPosts, deletePost } from './postsSlice';
 import { selectLoading } from '../loading/loadingSlice';
+import { selectErrors } from '../errors/errorsSlice';
 
 export default () => {
     const dispatch = useDispatch();
@@ -10,9 +11,20 @@ export default () => {
     }, [])
     const posts = useSelector(selectPosts);
     const isLoading = useSelector(selectLoading);
+    const errors = useSelector(selectErrors);
+
     if(isLoading) {
         return(
             <div>LOADING...</div>
+        )
+    }
+
+    if(errors) {
+        return (
+            <>
+                <div>{errors}</div>
+                <button onClick={() => dispatch(fetchAllPosts())}>Retry</button>
+            </>
         )
     }
     return(
