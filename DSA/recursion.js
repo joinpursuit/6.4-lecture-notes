@@ -64,4 +64,4 @@ const fibArray = (num, fibs = [0, 1]) => {
     return fibArray(num, fibs);
 }
 
-console.log(fibArray(5))
+// console.log(fibArray(5))
