@@ -22,4 +22,20 @@ fourth.next = fifth;
 
 // HINT: While loops. 
 
-console.log(head);
+// Sometimes think, can I use two pointers traveling at 
+// different speeds. 
+
+const findOdds = (head) => {
+    let output = []; 
+    let current = head;
+
+    while(current) {
+        if(current.val % 2 === 1) {
+            output.push(current.val);
+        }
+        current = current.next; 
+    }
+    return output;
+}
+
+console.log(findOdds(head));
