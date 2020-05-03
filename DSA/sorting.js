@@ -1,3 +1,5 @@
+// Watch the sorts: https://visualgo.net/bn/sorting
+
 // Bubble Sort O(n^2)
 
 // have a sorted variable
@@ -163,4 +165,4 @@ const fact = (n) => {
     }
     return output
 }
-console.log(fact(100000))
+// console.log(fact(100000))
