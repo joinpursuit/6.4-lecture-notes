@@ -131,3 +131,26 @@ const dfsMakeArrayOfValues = (root) => {
 //write a function that takes in a tree and 
 //returns the sum of all the values in the tress. 
 // must be written as a DFS. 
+
+const treeSumDFS = (node) => {
+    if(!node) return 0;
+    return node.val + treeSumDFS(node.left) + treeSumDFS(node.right);
+}
+
+// const treeSumDFSIter = (node) => {
+//     if(!node) return 0; 
+//     let stack = [node];
+//     let sum = 0; 
+//     while(stack.length) {
+//         let currentNode = stack.pop();
+//         sum += currentNode.val;
+//         if(currentNode.right) {
+//             stack.push(currentNode.right)
+//         }
+//         if(currentNode.left) {
+//             stack.push(currentNode.left)
+//         }
+//     }
+//     return sum;
+// }
+// console.log(treeSumDFSIter(a))
