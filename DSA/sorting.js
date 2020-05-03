@@ -147,5 +147,20 @@ const mergeSort = (arr) => {
 // };
 
 let arr = [3, 2, 1, 4, 1, 7];
-console.log(mergeSort(arr));
+// console.log(mergeSort(arr));
 
+
+const factorial = (n) => {
+    if(n <= 1) return 1;
+    return factorial(n - 1) * n;
+}
+
+const fact = (n) => {
+    let output = 1; 
+    while(n > 1) {
+        output *= n; 
+        n--;
+    }
+    return output
+}
+console.log(fact(100000))
