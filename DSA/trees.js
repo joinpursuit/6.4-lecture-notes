@@ -67,7 +67,67 @@ const bfs = (root) => {
     return output;
 }
 
-console.log(bfs(a));
+// console.log(bfs(a));
 
 // Write a breadthFirstTraversal that returns that 
 // sum of all values in the tree. 
+
+const sumTreeBFS = (root) => {
+    if(!root) return 0; 
+    let sum = 0;
+    let queue = [root]; 
+    while(queue.length) {
+        let currentNode = queue.shift();
+        sum += currentNode.val; 
+        if(currentNode.left) {
+            queue.push(currentNode.left)
+        }
+        if (currentNode.right) {
+            queue.push(currentNode.right);
+        }
+    }
+    return sum; 
+}
+
+// console.log(sumTreeBFS(a));
+
+const dfsInorder = (node) => {
+    if(!node) return null; 
+    dfsInorder(node.left);
+    console.log(node.val);
+    dfsInorder(node.right);
+}
+
+const dfsPreorder = (node) => {
+    if(!node) return null; 
+    console.log(node.val);
+    dfsPreorder(node.left);
+    dfsPreorder(node.right);
+}
+
+const dfsPostorder = (node) => {
+    if(!node) return null; 
+    dfsPostorder(node.left);
+    dfsPostorder(node.right);
+    console.log(node.val);
+}
+
+const dfsMakeArrayOfValues = (root) => {
+    let output = [];
+
+    const dfsInorder = (node) => {
+      if (!node) return null;
+      dfsInorder(node.left);
+      output.push(node.val);
+      dfsInorder(node.right);
+    };
+
+    dfsInorder(root)
+    return output; 
+}
+
+// console.log(dfsMakeArrayOfValues(a))
+
+//write a function that takes in a tree and 
+//returns the sum of all the values in the tress. 
+// must be written as a DFS. 
