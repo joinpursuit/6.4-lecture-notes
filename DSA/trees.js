@@ -126,6 +126,7 @@ const dfsMakeArrayOfValues = (root) => {
     return output; 
 }
 
+
 // console.log(dfsMakeArrayOfValues(a))
 
 //write a function that takes in a tree and 
