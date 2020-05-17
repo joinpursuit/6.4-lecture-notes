@@ -1,0 +1,13 @@
+{
+  "name": "cta_review",
+  "version": "1.0.0",
+  "description": "// we'll have users.  id email,",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1", 
+    "start": "cd backend && npm install && npm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

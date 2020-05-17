@@ -347,7 +347,7 @@ const firstToDrink = (people) => {
     while(left < right) {
         let mid = Math.floor((left + right) / 2);
         if(people[mid]['age'] >= 21) {
-            right = mid
+            right = mid 
         } else {
             left = mid + 1;
         }
