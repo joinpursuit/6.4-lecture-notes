@@ -4,11 +4,33 @@ import "./App.css";
 import Heros from "./Heros";
 import ErrorBoundaries from "./ErrorBoundaris";
 import Counter from "./Counter";
+import CounterErrorBoundaries from "./CounterErrorBoundaries";
+import Person from "./Person";
 
 function App() {
+  const people = [
+    { names: { firstName: "corey", lastName: "Ladovsky" } },
+    { age: 19 },
+    { names: { firstName: "Alejo", lastName: "Franco" } },
+  ];
+
   return (
     <div className="App">
-      <Counter />
+      <CounterErrorBoundaries>
+        <Counter />
+      </CounterErrorBoundaries>
+
+      <CounterErrorBoundaries>
+        <Counter />
+      </CounterErrorBoundaries>
+
+      {people.map((person) => {
+        return (
+          <ErrorBoundaries>
+            <Person names={person.names} />
+          </ErrorBoundaries>
+        );
+      })}
       {/* <ErrorBoundaries>
         <Heros hero={"superman"} />
       </ErrorBoundaries>
@@ -18,7 +40,6 @@ function App() {
       <ErrorBoundaries>
         <Heros hero={"wonder woman"} />
       </ErrorBoundaries> */}
-
     </div>
   );
 }

@@ -1,5 +1,12 @@
 import React from "react";
 
+// Catches errors that occur: 
+// rendering 
+// lifecycle methods
+// constructors of whole tree below them 
+
+//Does  NOT catch errors inside event handlers. Use try / catch for those. 
+
 class ErrorBoundaries extends React.Component {
     state = {hasError: false}
 
