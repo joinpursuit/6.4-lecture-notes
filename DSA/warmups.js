@@ -147,4 +147,88 @@ const specialArrayProdSumReduce = (arr, depth = 1) =>
     0
   );
 
-console.log(specialArrayProdSum([5, 2, [7, -1], 3, [6, [-13, 8], 4]]));
+// console.log(specialArrayProdSum([5, 2, [7, -1], 3, [6, [-13, 8], 4]]));
+
+
+// Write a function that takes in two strings and determines whether those strings are anagrams.
+// An anagram is a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman
+
+// RULES
+// Length must be the same on each string 
+// Must only have same letters 
+// Letters must have equal count in each string. 
+
+// coming with multiple high level approaches. 
+// return str1.split("").sort().join("") === str2.split("").sort().join("") // nlogn 
+
+const counterOfStr = (str) => {
+  const counts = {};
+  for(let char of str.toLowerCase()) {
+        if (char === " ") continue; 
+    counts[char] ? counts[char]++ : counts[char] = 1;
+  }
+  return counts;
+}
+
+const isAnagram = (str1, str2) => {
+  // if(str1.length !== str2.length ) return false; 
+  let str1Counts = counterOfStr(str1);
+  
+  for(let char of str2.toLowerCase()) {
+    if(char === " ") continue; 
+    if(str1Counts[char]) {
+      str1Counts[char]--;
+    } else {
+      return false; 
+    }
+  }
+  
+  // return true; 
+
+  return Object.values(str1Counts).every(el => el === 0)
+}
+
+// console.log(isAnagram("el vis", "Live  s"))
+// console.log(isAnagram("cinema", "iceman"))
+// console.log(isAnagram("elvis", "loves"))
+// console.log(isAnagram("ellvis", "lives"))
+// console.log(isAnagram("elvis", "llives"))
+
+// Write a deep dup function that 
+// returns a copy of an array and all nested arrays inside it. 
+
+
+const deepDup = (arr) => {
+  let output = [];
+  arr.forEach(el => {
+    if(Array.isArray(el)) {
+      output.push(deepDup(el));
+    } else {
+      output.push(el);
+    }
+  })
+  return output; 
+}
+
+const deepDup2 = (arr) => (
+   arr.map(el => Array.isArray(el) ? deepDup2(el) : el)
+)
+
+let arr = [1, 2, [3, [4, [], 5, 6], 7], 8, 9];
+
+
+let dup = deepDup2(arr);
+// let dup = [...arr]  ///arr.slice(0); 
+// console.log(dup)
+dup[2][0] = "cat"; 
+console.log(dup)
+console.log(arr); // [1, 2, [3, [4, [], 5, 6], 7], 8, 9]
+
+// let names = ["maria", "corey", "bill"]
+// let namesDup = names.slice(0);
+// console.log(names)
+// console.log(namesDup)
+
+// namesDup[2] = "bob";
+// console.log(names)
+// console.log(namesDup)
