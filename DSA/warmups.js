@@ -214,15 +214,15 @@ const deepDup2 = (arr) => (
    arr.map(el => Array.isArray(el) ? deepDup2(el) : el)
 )
 
-let arr = [1, 2, [3, [4, [], 5, 6], 7], 8, 9];
+// let arr = [1, 2, [3, [4, [], 5, 6], 7], 8, 9];
 
 
-let dup = deepDup2(arr);
-// let dup = [...arr]  ///arr.slice(0); 
+// let dup = deepDup2(arr);
+// // let dup = [...arr]  ///arr.slice(0); 
+// // console.log(dup)
+// dup[2][0] = "cat"; 
 // console.log(dup)
-dup[2][0] = "cat"; 
-console.log(dup)
-console.log(arr); // [1, 2, [3, [4, [], 5, 6], 7], 8, 9]
+// console.log(arr); // [1, 2, [3, [4, [], 5, 6], 7], 8, 9]
 
 // let names = ["maria", "corey", "bill"]
 // let namesDup = names.slice(0);
@@ -232,3 +232,72 @@ console.log(arr); // [1, 2, [3, [4, [], 5, 6], 7], 8, 9]
 // namesDup[2] = "bob";
 // console.log(names)
 // console.log(namesDup)
+
+
+
+
+// A palindrome is any string that can be read forwards or backwards like racecar, and abba. 
+// Your job, is to write a function that determines whether a given string is a permutation
+//  of a palindrome (it should return true or false). In other words, could this string of 
+//  characters be shuffled in a way that would make them a palindrome.
+
+
+
+// is the str a single world a sentence ? 
+// Are there spaces in the str and how should those be handled? 
+// Should this be case senstive? should aba be the same as Aba . 
+// What should an empty string return? 
+// Should I worry about punctuation? 
+// Should I be concerened about other languages. 
+// How defensive should I make this? Will it really always be given a string. 
+
+// "abcba"   d 
+
+// Rules: 
+// 1. Per occurance of letter, there can only be one odd occurence. ( We can use the remainder % to identify odd counts )
+// 
+
+// Steps 
+// Make a counter object, Key will be: char/letter , value: occurance  // helper function 
+// Iterate through the object. If more than one odd occurance return false
+// If we make it through the whole object, it must be true; 
+
+//time complexity : O(n)
+// space complexity: O(n) for each character we would create a new key value pair 
+                      // O(1) constant is because there's only 26 letters in the alphabet.
+
+const counterHelper = (str) => {
+  let avoid = new Set(" !?.,%$");
+  const counts = {};
+  for(let char of str) {
+    if(avoid.has(char)) continue
+    counts[char] ? counts[char] += 1 : counts[char] = 1
+  }
+  return counts; 
+}
+
+const isPermutationOfPallindrome = (str) => {
+  if(typeof(str) !== "string") {
+    throw Error("Input must be string")
+  }
+  const counts = counterHelper(str.toLowerCase());
+  let hasOdd = false; 
+  for(let char in counts) {
+    if(counts[char] % 2 === 1) {
+      if(hasOdd) {
+        return false; 
+      } else {
+        hasOdd = true; 
+      }
+    }
+  }
+  return true; 
+}
+
+console.log(isPermutationOfPallindrome("a!cerrca"));
+console.log(isPermutationOfPallindrome("aabb"));
+console.log(isPermutationOfPallindrome("aabbbc"));
+
+// Input: acerrca Output: true 
+// Input aabb Ouput: true 
+//Input aabbbc Ouput: false 
