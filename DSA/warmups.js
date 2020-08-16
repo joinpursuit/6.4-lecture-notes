@@ -267,7 +267,7 @@ const deepDup2 = (arr) => (
                       // O(1) constant is because there's only 26 letters in the alphabet.
 
 const counterHelper = (str) => {
-  let avoid = new Set(" !?.,%$");
+  const avoid = new Set(" !?.,%$");
   const counts = {};
   for(let char of str) {
     if(avoid.has(char)) continue
@@ -294,10 +294,82 @@ const isPermutationOfPallindrome = (str) => {
   return true; 
 }
 
-console.log(isPermutationOfPallindrome("a!cerrca"));
-console.log(isPermutationOfPallindrome("aabb"));
-console.log(isPermutationOfPallindrome("aabbbc"));
+// console.log(isPermutationOfPallindrome("a!cerrca"));
+// console.log(isPermutationOfPallindrome("aabb"));
+// console.log(isPermutationOfPallindrome("aabbbc"));
 
 // Input: acerrca Output: true 
 // Input aabb Ouput: true 
 //Input aabbbc Ouput: false 
+
+
+
+// Given a string which consists of lowercase or uppercase letters, 
+// find the length of the longest palindromes that can be built with those letters.
+
+// This is case sensitive, for example "Aa" is not considered a palindrome here.
+
+// Input:
+// "abccccdd"
+
+// Output:
+// 7
+
+// Explanation:
+// One longest palindrome that can be built is "dccaccd", whose length is 7.
+
+// 1. Create a occurance map of each character. 
+  //  {
+  //   a: 3,    // 2  value  = Math.floor(value / 2) * 2  OR value = value - (value % 2)
+  //   b: 1    // 0 
+  //   c: 5     // 4 
+  //   d: 2    /// 2
+   // }
+   
+
+// 2.  length variable needed, and hasOdd variable 
+// 3. Loop through object 
+// 4. add to length  Math.floor(value / 2) * 2
+// 5. update hasOdd 
+// 6. return length + hasOdd (0 or 1) 
+
+const counterString = (str) => {
+  const counts = {};
+  for(let char of str) {
+    counts[char] ? counts[char]++ : counts[char] = 1;
+  }
+  return counts; 
+}
+
+const longestPalindrome = (str) => {
+  const counts = counterString(str);
+  let length = 0;
+  let hasOdd = 0;
+  
+  for(let char in counts) {
+    length += Math.floor(counts[char] / 2) * 2;
+    if(counts[char] % 2 === 1) hasOdd = 1; 
+  }
+  return length + hasOdd
+}
+
+// abccccdd
+// length = 6 
+// "a, b"
+
+const longestPalindrome2 = (str) => {
+  let set = new Set(); 
+  let length = 0; 
+  for(let char of str) {
+    if(set.has(char)) {
+      length += 2
+      set.delete(char)
+    } else {
+      set.add(char);
+    }
+  }
+
+  if(set.size > 0) return length + 1
+  
+  return length 
+}
