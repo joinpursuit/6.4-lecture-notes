@@ -373,3 +373,104 @@ const longestPalindrome2 = (str) => {
   
   return length 
 }
+
+
+// Write a function that takes in a string and returns whether or 
+// not the string is a palindrome. A palindrome is any word that is spelled 
+// the same forwards and backwards.
+
+// Goal: try and solve this problem in multiple ways.
+
+// Ask are we concerned with string casing? 
+// Will there be numbers or punctuation to worry about? 
+// Get some example inputs and outputs. 
+// will there be spaces ? 
+// Is an empty string a palindrome? 
+
+
+//input: racecar  output: true 
+// input: abba    output: true 
+// amanaplanacanalpanama   true 
+// abb // false 
+// ""  ? 
+
+// split string, reverse array, join to string , check if it's equal to original string. 
+
+const isPalindrome1 = (str) => str === str.split("").reverse().join(""); // 3n -> N   //space -> N 
+
+const isPalindrome2 = (str) => {  // 2N -> N  //  space N 
+  let arr = str.split("");
+  for(let char of arr) {
+    if(char !== arr.pop()) {
+      return false
+    }
+  }
+  return true; 
+}
+
+// usually you don't want to mutate the array as you're iterating through it unless its sorting it in some way.
+
+
+const isPalindrome3 = (str) => {            // (1/2)N -> N    //space -> O(1)
+  for(let i = 0; i < Math.floor(str.length / 2); i++) {
+    if(str[i] !== str[str.length - 1 - i]) {
+      return false; 
+    }
+  }
+  return true; 
+}
+
+// abba // 4
+// i: 4
+// str[i] : a
+// str[str.length - 1 - i] : a
+
+const isPalindrome4 = (str) => {  // (1/2)N -> N // space -> constant o(1)
+  let i = 0; 
+  let j = str.length - 1;
+
+  while(i < j) {
+    if(str[i] !== str[j]) return false; 
+
+    i++; 
+    j--; 
+  }
+  return true; 
+}
+
+const isPalindrome5 = (str, i = 0) => {   // (1/2)N -> N  // space (program is constant) but recursive stack frame (1/2N -> N)
+  if(i >= Math.floor(str.length / 2)) return true; 
+  if(str[i] !== str[str.length - 1 - i]) return false; 
+  return isPalindrome5(str, i + 1);
+}
+
+const isPalForEach = (str) => {
+  let output = true;
+  str.split("").forEach((el, i) => {
+    if(el !== str[str.length - 1 - i]) {
+      output = false; 
+    }
+  })
+  return output; 
+}
+
+
+//will there be a callstack error if the string get a lot longer? 
+// YES 
+
+console.log(isPalForEach("racecar"));
+console.log(isPalForEach("abba"));
+console.log(isPalForEach("amanaplanacanalpanama"));
+console.log(isPalForEach("abb"));
+console.log(isPalForEach(""));
+
+// const countdown = (num) => {
+//   let j = num
+//   while(num > 0 ) {
+//     console.log(num);
+//     num--
+//   }
+//   // if(num <= 0) return
+//   // countdown(num - 1)
+// }
+// countdown(110000)
