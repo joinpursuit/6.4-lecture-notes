@@ -444,15 +444,15 @@ const isPalindrome5 = (str, i = 0) => {   // (1/2)N -> N  // space (program is c
   return isPalindrome5(str, i + 1);
 }
 
-const isPalForEach = (str) => {
-  let output = true;
-  str.split("").forEach((el, i) => {
-    if(el !== str[str.length - 1 - i]) {
-      output = false; 
-    }
-  })
-  return output; 
-}
+// const isPalForEach = (str) => {
+//   let output = true;
+//   str.split("").forEach((el, i) => {
+//     if(el !== str[str.length - 1 - i]) {
+//       output = false; 
+//     }
+//   })
+//   return output; 
+// }
 
 
 //will there be a callstack error if the string get a lot longer? 
@@ -474,3 +474,59 @@ console.log(isPalForEach(""));
 //   // countdown(num - 1)
 // }
 // countdown(110000)
+
+// For a given string s find the character c (or C) with longest consecutive repetition and return:
+// https://www.codewars.com/kata/586d6cefbcc21eed7a001155/train/javascript
+
+// clarifying questions: 
+  //  Case sensitive? 
+  //  English alphabet? 
+  //  Puncuation? Spaces ? 
+
+// str: "aabbba"
+// maxCount: 0;
+// maxLetter: ""
+// currChar: s[0]
+// currCount
+
+// char: "a"
+  // maxCount to keep track of max 
+  // maxLetter the letter of the max count 
+  // currCount - count that changes with each iteration 
+  // currChar - does the char match the currChar 
+
+  // check if str has length 
+  // iterate through our string. 
+  // if char === currChar 
+   //    increment our currCount 
+   // else 
+  ///      reset currCount : 1 and reset our currChar = char 
+
+  // if currCount > maxCount 
+  //    update maxCount to be currCount and update maxLetter to be the currLetter 
+
+  // return [maxLetter, maxCount]
+
+function longestRepetition(str) {
+  if(!str) return ["", 0];
+  let maxCount = 0;
+  let maxLetter = "";
+  let currCount = 0;
+  let currChar = str[0];
+
+  for(let char of str) {
+    if(char === currChar) {
+      currCount++; 
+    } else {
+      currCount = 1; 
+      currChar = char;
+    }
+
+    if(currCount > maxCount) {
+      maxCount = currCount; 
+      maxLetter = currChar;
+    }
+  }
+
+  return [maxLetter, maxCount]
+}
