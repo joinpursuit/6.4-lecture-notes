@@ -458,11 +458,11 @@ const isPalindrome5 = (str, i = 0) => {   // (1/2)N -> N  // space (program is c
 //will there be a callstack error if the string get a lot longer? 
 // YES 
 
-console.log(isPalForEach("racecar"));
-console.log(isPalForEach("abba"));
-console.log(isPalForEach("amanaplanacanalpanama"));
-console.log(isPalForEach("abb"));
-console.log(isPalForEach(""));
+// console.log(isPalForEach("racecar"));
+// console.log(isPalForEach("abba"));
+// console.log(isPalForEach("amanaplanacanalpanama"));
+// console.log(isPalForEach("abb"));
+// console.log(isPalForEach(""));
 
 // const countdown = (num) => {
 //   let j = num
@@ -530,3 +530,21 @@ function longestRepetition(str) {
 
   return [maxLetter, maxCount]
 }
+
+// Given a linked list, determine if it has a cycle in it.
+// Follow up:
+// Can you solve it using O(1) (i.e. constant) memory? 
+
+const hasCycle = (head) => {
+  let slow = head; 
+  let fast = head; 
+  while(fast && fast.next) {
+    fast = fast.next.next; 
+    slow = slow.next;
+    if(fast === slow) return true; 
+  }
+  return false; 
+}
+
+// o(n) linear time 
+// o(1) constant space
