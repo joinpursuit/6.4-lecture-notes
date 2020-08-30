@@ -548,3 +548,31 @@ const hasCycle = (head) => {
 
 // o(n) linear time 
 // o(1) constant space
+
+
+
+// A binary tree is univalued if every node in the tree has the same value.
+// Return true if and only if the given tree is univalued.
+
+// const isUnivalTree = (root) => {  // BFS   Time: O(n)  Space: O(width) 
+//   let compareValue = root.val; 
+//   let q = [ root ]
+//   while(q.length > 0) {
+//     let node = q.shift();
+//     if(node.val !== compareValue) return false; 
+//     if(node.left) q.push(node.left);
+//     if(node.right) q.push(node.right);
+//   }
+//   return true; 
+// };
+
+const isUnivalTree = (root) => { //DFS Time: O(linear) Space: stack frames for each node (not 100% sure)
+  let compareValue = root.val; 
+
+  const dfs = (node) => {
+    if(!node) return true; 
+    return compareValue === node.val && dfs(node.left) && dfs(node.right)
+  }
+
+  return dfs(root);
+}
