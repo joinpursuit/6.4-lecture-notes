@@ -576,3 +576,88 @@ const isUnivalTree = (root) => { //DFS Time: O(linear) Space: stack frames for e
 
   return dfs(root);
 }
+
+// Write a program that outputs the string representation of numbers from 1 to n.
+
+// But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. 
+// For numbers which are multiples of both three and five output “FizzBuzz”.
+
+// Example:
+
+// n = 15,
+
+// Return:
+// [
+//     "1",
+//     "2",
+//     "Fizz",
+//     "4",
+//     "Buzz",
+//     "Fizz",
+//     "7",
+//     "8",
+//     "Fizz",
+//     "Buzz",
+//     "11",
+//     "Fizz",
+//     "13",
+//     "14",
+//     "FizzBuzz"
+// ]
+
+//Clarifying questions: 
+// Asking about inputs and outputs. Make sure we really understand. 
+// if a negative number? 
+
+// iterate from 1 - n  and check for even divisibilty. 
+// first check 5 & 3 
+// then check 5 , then 3, then string number. 
+
+
+
+// const fizzBuzz = (n) => {
+//   const output = [];
+//   for(let i = 1; i <= n; i++) {
+//     if(i % 5 === 0 && i % 3 === 0) {
+//       output.push("FizzBuzz");
+//     } else if(i % 3 === 0) {
+//       output.push("Fizz")
+//     } else if(i % 5 === 0) {
+//       output.push("Buzz")
+//     } else {
+//       output.push(i.toString());  // "" + i /// `${i}` // String(i) // 
+//     }
+//   }
+//   return output; 
+// }
+// output: ["1", "2", "Fizz", "4", "Buzz"]
+// n: 10
+// f: 2
+// b: 0
+// i: 6
+
+const fizzBuzz = (n) => {
+  const output = [];
+  let fizz = 0;
+  let buzz = 0; 
+  let i = 1; 
+  while(i <= n) {
+    fizz++;
+    buzz++;
+    if(fizz === 3 && buzz === 5) {
+      output.push("FizzBuzz");
+      fizz = 0; 
+      buzz = 0;
+    } else if(fizz === 3) {
+      output.push("Fizz");
+      fizz = 0;
+    } else if(buzz === 5) {
+      output.push("Buzz")
+      buzz = 0;
+    } else {
+      output.push(String(i))
+    }
+    i++
+  }
+  return output; 
+}
