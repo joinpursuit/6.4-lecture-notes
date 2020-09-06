@@ -641,7 +641,7 @@ const fizzBuzz = (n) => {
   let fizz = 0;
   let buzz = 0; 
   let i = 1; 
-  while(i <= n) {
+  while(i <= n) { 
     fizz++;
     buzz++;
     if(fizz === 3 && buzz === 5) {
@@ -661,3 +661,43 @@ const fizzBuzz = (n) => {
   }
   return output; 
 }
+
+
+// Todays problem is inspired by 
+// https://codingjs.wmcicompsci.ca/exercise.html?name=roundSum&title=Logic-2 
+// Part1: Write a function that rounds a value to the next multiple of 10 
+// if its rightmost digit is 5 or more, so 15 rounds up to 20. 
+// Alternately, round down to the previous multiple of 10 if its rightmost 
+// digit is less than 5, so 12 rounds down to 10.
+
+// Part2: Write a function that takes in 3 arguments, 
+// rounds all of them, and then returns the sum of all rounded arguments.
+
+// Part 3: Update your second function to work with any number of arguments
+//  (this function cannot and should not take in an array, only multiple arguments).
+
+const round = (num) => {
+  const rightDigit = num % 10;
+  if(rightDigit >= 5) return num + (10 - rightDigit)
+  return num - rightDigit;
+}
+
+const roundSum = (...args) => args.reduce((sum, el) => sum + round(el), 0);
+
+// function roundSum () {
+//   let sum = 0;
+//   for(let i = 0; i < arguments.length; i++) {
+//     sum += round(arguments[i])
+//   }
+//   return sum; 
+// }
+
+console.log(roundSum(27, 17, 32, 9));
+
+// num: 26
+// rightDigit: 6
+// should be 30
+
+// what do we need to add: 4
+
+// 26 + (10 - 6) = 30
