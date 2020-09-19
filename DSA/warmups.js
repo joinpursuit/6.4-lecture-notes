@@ -692,7 +692,7 @@ const roundSum = (...args) => args.reduce((sum, el) => sum + round(el), 0);
 //   return sum; 
 // }
 
-console.log(roundSum(27, 17, 32, 9));
+// console.log(roundSum(27, 17, 32, 9));
 
 // num: 26
 // rightDigit: 6
@@ -701,3 +701,53 @@ console.log(roundSum(27, 17, 32, 9));
 // what do we need to add: 4
 
 // 26 + (10 - 6) = 30
+
+
+// You are given an array of people objects.
+//  Each object has the properties and name and age. 
+//  Your task is to write a function that returns the second oldest person.
+// will we have duplicate ages ? If so which should I return? 
+
+// sort the array NLog(n)
+
+// const secondOldest = (people) => {
+//   people.sort((a, b) => {
+//      return b.age - a.age
+//   })
+//   return people[1]
+// }
+
+// this example is allowing for duplicates but not caring which answer you give in case of ties . 
+const secondOldest = (people) => {  // N time, and O(1) constant space 
+  if(people.length < 2) throw Error("No second oldest");
+
+  let oldest = {age: 0}       // the reason we didn't care about finding the greater of the first 2 is 
+  let secondOldest = {age: 0} // because the youngest a person can be is 0. So this is our -Infinity. 
+
+  for(let i = 0; i < people.length; i++) {
+    let person = people[i];
+    if(person.age >= oldest.age) {
+      secondOldest = oldest;
+      oldest = person; 
+    } else if(person.age >= secondOldest.age) {
+      secondOldest = person; 
+    }
+  }
+
+  return secondOldest; 
+
+}
+
+// let people = [
+//   {name: "Corey", age: 100},
+//   {name: "Jhenya", age: 25},
+//   {name: "Caroline", age: 27},
+//   {name: "Jon", age: 18},
+// ]
+
+let people = [
+  {name: "Corey", age: 0},
+  {name: "Jhenya", age: 0},
+]
+
+console.log(secondOldest(people))
