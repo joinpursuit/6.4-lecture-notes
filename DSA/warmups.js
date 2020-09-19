@@ -745,9 +745,22 @@ const secondOldest = (people) => {  // N time, and O(1) constant space
 //   {name: "Jon", age: 18},
 // ]
 
-let people = [
-  {name: "Corey", age: 0},
-  {name: "Jhenya", age: 0},
-]
+// let people = [
+//   {name: "Corey", age: 0},
+//   {name: "Jhenya", age: 0},
+// ]
 
-console.log(secondOldest(people))
+// console.log(secondOldest(people))
+
+// let obj = {name: "corey", age: 100};
+
+// const {name, age } = {name: "corey", age: 100}
+
+// console.log(name)
+
+// let [a, ...b] = ["a", "b", "c", "d"]
+// console.log(b)
+
+// let arr = [1, 2, 3, 4, 5];
+// [arr[0], arr[arr.length - 1]] = [arr[arr.length - 1], arr[0]];
+// console.log(arr)
