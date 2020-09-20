@@ -106,7 +106,7 @@ const sockCount2 = (socks) => {
 
 // console.log(sockCount2([1, 2, 4, 2, 4, 2, 2, 2]));
 
-// Write a function that takes in a “special” array and returns its product sum.
+// Write a function that takes in a special” array and retur"ns its product s"m.;
 // A “special” array is a non-empty array that contains either integers or other
 // “special” arrays. The product sum of a “special” array is the sum of its elements, where “special”
 //  arrays inside it are summed themselves and then multiplied by their level of depth.
@@ -764,3 +764,55 @@ const secondOldest = (people) => {  // N time, and O(1) constant space
 // let arr = [1, 2, 3, 4, 5];
 // [arr[0], arr[arr.length - 1]] = [arr[arr.length - 1], arr[0]];
 // console.log(arr)
+
+// Write a function that takes a sentences as the argument.
+//  Your function should return a new sentence. Any word in the sentence that has 
+//  more than 4 letters should have no vowels.
+// Exp: Input “Hello world”  output: “Hll wrld”
+// Input: “My name is Corey” output “My name is Cry”
+
+// split sentence into words .split(" ");
+// iterate over the array and check the length of each word. 
+// if the word is length 4 or less - don't care - add it directly output. 
+// else disemvowel word and then add it to our output. 
+// join our output " "
+
+const disemvowelWord = (word) => {
+  let output = "";
+  const vowels = new Set("aeiou")
+  
+  for(let char of word) {
+    if(!vowels.has(char.toLowerCase())) {
+      output += char
+    }
+  }
+
+  return output; 
+}
+
+// console.log(disemvowelWord("Apple"))
+
+// const disemvowelBigWords = (sentence) => {
+//   let words = sentence.split(" ");
+//   let output = [];
+
+//   words.forEach(word => {
+//     if(word.length <= 4) {
+//       output.push(word)
+//     } else {
+//       let newWord = disemvowelWord(word)
+//       output.push(newWord)
+//     }
+//   })
+
+//   return output.join(" ")
+// }
+
+const disemvowelBigWords = (sentence) => 
+   sentence
+    .split(" ")
+    .map((word) => (word.length <= 4 ? word : disemvowelWord(word)))
+    .join(" ");
+
+
+console.log(disemvowelBigWords("My name is Corey"));
