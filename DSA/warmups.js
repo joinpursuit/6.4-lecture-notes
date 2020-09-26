@@ -815,4 +815,81 @@ const disemvowelBigWords = (sentence) =>
     .join(" ");
 
 
-console.log(disemvowelBigWords("My name is Corey"));
+// console.log(disemvowelBigWords("My name is Corey"));
+
+//PROBLEM: 
+// Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+
+// You may assume that the array is non-empty and the majority element always exist in the array.
+
+// Example 1:
+
+// Input: [3,2,3]
+// Output: 3
+// Example 2:
+
+// Input: [2,2,1,1,1,2,2]    
+// Output: 2
+
+// iterate through the array and keep a count of appearance. If count is great than our mid point, we can return the element. 
+
+// const majorityElement = (arr) => { // n time and n space 
+//   const counts = {};
+//   for(let el of arr) {
+//     counts[el] ? counts[el]++ : counts[el] = 1; 
+//     if(counts[el] > arr.length / 2) {
+//       return el; 
+//     }
+//   }
+// }
+
+// when we see array problems, always ask would it beneficial if it was sorted. 
+// const majorityElement = (arr) => {   // nlogn time and constant space 
+//   arr.sort((a, b) => a - b);
+//   return arr[Math.floor(arr.length / 2)]
+// }
+
+// can we do it in n time and constant space 
+// we'll have a candidate variable 
+// we can keep a count variable starting at 0 
+
+// iterate array 
+// if our count variable is 0, update candiate to be current element 
+// if current element === our candidate, increment our count 
+// otherwise we can decrement our count 
+
+// Input: [2,2,1,1,1,2,2]    
+// Output: 2
+
+const majorityElement = (arr) => {
+  let count = 0; 
+  let candidate; 
+  arr.forEach(el => {
+    if(count === 0) {
+      candidate = el; 
+    }
+
+    if(candidate === el) {
+      count++
+    } else {
+      count--
+    }
+  })
+  
+  count = 0;
+  arr.forEach(el => {
+    if(el === candidate) count++
+  })
+
+  if(count > Math.floor(arr.length / 2)) {
+    return candidate
+  } else {
+    throw Error("No majority Element! ")
+  }
+}
+
+// [3, 3, 2, 4, 2, 2]
+// count = 2;
+// cand = 2
+
+console.log(majorityElement([2, 2, 1, 1, 1, 2, 2]));
